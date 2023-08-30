@@ -12,17 +12,17 @@
 - name: wait 300 seconds for port 22 to become open and contain "OpenSSH"
   ansible.builtin.wait_for:
     port: 22
-    host: "{{ item }}"
+    host: "{{ ansible_host }}"
     search_regex: OpenSSH
   with_inventory_hostnames:
     - all
 
 - name: write the new ssh fingerprint to known hosts
-  ansible.builtin.shell: "ssh-keyscan {{ item }} >> ~/.ssh/known_hosts"
+  ansible.builtin.shell: "ssh-keyscan {{ ansible_host }} >> ~/.ssh/known_hosts"
   with_inventory_hostnames:
     - all
 
 - name:
-  ansible.builtin.command: sshpass -p {{ microshift_pass }} ssh-copy-id {{ ansible_user }}@{{ item }}
+  ansible.builtin.command: sshpass -p {{ microshift_pass }} ssh-copy-id {{ ansible_user }}@{{ ansible_host }}
   with_inventory_hostnames:
     - microshift
