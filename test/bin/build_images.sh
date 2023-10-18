@@ -51,7 +51,7 @@ configure_package_sources() {
         outfile="${IMAGEDIR}/package-sources/${name}.toml"
 
         echo "Rendering ${template} to ${outfile}"
-        ${GOMPLATE} --file "${template}" >"${outfile}" 
+        ${GOMPLATE} --file "${template}" >"${outfile}"
         if [[ "$(wc -l "${outfile}" | cut -d ' ' -f1)" -eq 0 ]]; then
             echo "WARNING: Templating '${template}' resulted in empty file! - SKIPPING"
             continue
@@ -72,7 +72,7 @@ configure_package_sources() {
     done
 }
 
-# Reads release-info RPM for provided version to obtain images 
+# Reads release-info RPM for provided version to obtain images
 # and returns them as comma-separated list.
 get_container_images() {
     local -r version="${1}"
@@ -214,12 +214,21 @@ do_group() {
 
         blueprint_file="${IMAGEDIR}/blueprints/$(basename "${template}")"
 
+        # Check for the file to exist, in case the user passed a
+        # template on the command line.
+        if [ ! -f "${template}" ]; then
+            echo "ERROR: Template ${template} does not exist"
+            record_junit "${groupdir}" "${template}" "render" "FAILED"
+            return 1
+        fi
+
         echo "Rendering ${template} to ${blueprint_file}"
         ${GOMPLATE} --file "${template}" >"${blueprint_file}"
-        if [[ "$(wc -l "${outfile}" | cut -d ' ' -f1)" -eq 0 ]]; then
+        if [[ "$(wc -l "${blueprint_file}" | cut -d ' ' -f1)" -eq 0 ]]; then
             echo "WARNING: Templating '${template}' resulted in empty file! - SKIPPING"
             continue
         fi
+        record_junit "${groupdir}" "${template}" "render" "OK"
 
         blueprint=$(get_blueprint_name "${blueprint_file}")
 
@@ -377,7 +386,9 @@ build_images.sh [-Is] [-g group-dir] [-t template]
 
   -g DIR  Build only one group.
 
-  -t FILE Build only one template. Implies -g based on filename.
+  -t FILE Build only one template. The FILE should be the path to
+          the template to build. Implies -g based on filename.
+
 EOF
 }
 
