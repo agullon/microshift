@@ -550,18 +550,27 @@ next_minor_version() {
     echo $(( $(current_minor_version) + 1 ))
 }
 
-# Enable/Disable Stress Condition
+# Public function to enable or disable a Stress Condition
+#
+# Enables or disables a Condition Condition to limit a resource
+# at OS level limiting resources (latency, bandwidth, packet loss, memory, disk...)
+# to a given value for development and testing porpuses.
+#
+# Arguments
+#  vmname -- The short name of the VM in the scenario (e.g., "host1")
+#  action -- "enable" or "disable"
+#  condition -- The name of the resource to be be limited
+#  value  -- The target value for the Stress Condition
 stress_testing() {
     local -r vmname="${1}"
     local -r action="${2}"
     local -r condition="${3}"
     local -r value="${4}"
 
-    local -r ssh_host="${SCENARIO_INFO_DIR}/${SCENARIO}/vms/${vmname}/public_ip"
+    local -r ssh_host="$(get_vm_property "${vmname}" public_ip)"
     local -r ssh_user=redhat
-    local -r ssh_port="${SCENARIO_INFO_DIR}/${SCENARIO}/vms/${vmname}/ssh_port"
+    local -r ssh_port="$(get_vm_property "${vmname}" ssh_port)"
     local -r ssh_pkey="${SSH_PRIVATE_KEY:-}"
-
 
 	if [ "${action}" == "enable" ]; then
         echo "${action}d stress condition: ${condition} ${value}"
