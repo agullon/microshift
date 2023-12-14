@@ -21,8 +21,8 @@ sudo dnf copr enable -y @osbuild/osbuild epel-9-"$(uname -m)"
 sudo dnf copr enable -y @osbuild/osbuild-composer rhel-9-"$(uname -m)"
 
 sudo dnf install -y \
-    osbuild-composer-95 \
-    osbuild-100 \
+    osbuild-composer-96-1.20231213092324044071.main.10.g991293a89.el9 \
+    osbuild-101-1.20231213161521815551.main.24.g05c0fd31.el9 \
     git composer-cli ostree rpm-ostree \
     cockpit-composer bash-completion podman runc genisoimage \
     createrepo yum-utils selinux-policy-devel jq wget lorax rpm-build \
