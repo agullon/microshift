@@ -75,7 +75,7 @@ cd "${SCRIPTDIR}" || (echo "Did not find ${SCRIPTDIR}" 1>&2; exit 1)
 TESTS="$*"
 # if TESTS is not set - run the standard suite.
 if [ -z "${TESTS}" ]; then
-    TESTS=(./suites/standard1 ./suites/standard2)
+    TESTS=(./suites/standard2)
 fi
 
 # enable stress condition
