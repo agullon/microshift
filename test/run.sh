@@ -83,10 +83,10 @@ if [ "${STRESS_TESTING:-}" ]; then
     CONDITION="${STRESS_TESTING%=*}"
     VALUE="${STRESS_TESTING#*=}"
 
-    SSH_HOST=$("${YQ_BINARY}" '.USHIFT_HOST' "${SCRIPTDIR}"/rf_variables.yaml)
-    SSH_USER=$("${YQ_BINARY}" '.USHIFT_USER' "${SCRIPTDIR}"/rf_variables.yaml)
-    SSH_PORT=$("${YQ_BINARY}" '.SSH_PORT' "${SCRIPTDIR}"/rf_variables.yaml)
-    SSH_PKEY=$("${YQ_BINARY}" '.SSH_PRIV_KEY' "${SCRIPTDIR}"/rf_variables.yaml)
+    SSH_HOST=$("${YQ_BINARY}" '.USHIFT_HOST' "${RF_VARIABLES}")
+    SSH_USER=$("${YQ_BINARY}" '.USHIFT_USER' "${RF_VARIABLES}")
+    SSH_PORT=$("${YQ_BINARY}" '.SSH_PORT' "${RF_VARIABLES}")
+    SSH_PKEY=$("${YQ_BINARY}" '.SSH_PRIV_KEY' "${RF_VARIABLES}")
 
     "${SCRIPTDIR}"/bin/stress_testing.sh -e "${CONDITION}" -v "${VALUE}" -h "${SSH_HOST}" -u "${SSH_USER}" -p "${SSH_PORT}" -k "${SSH_PKEY}"
 fi
