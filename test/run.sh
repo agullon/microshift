@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -x -euo pipefail
 IFS=$'\n\t'
 
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -64,8 +64,8 @@ fi
 
 # DEST_DIR var is the python env dir used by fetch_tools.sh to install the tools
 export DEST_DIR="${RF_VENV}"
-"${ROOTDIR}/scripts/fetch_tools.sh" robotframework
-"${ROOTDIR}/scripts/fetch_tools.sh" yq
+"${ROOTDIR}/scripts/fetch_tools.sh" -x robotframework
+"${ROOTDIR}/scripts/fetch_tools.sh" -x yq
 
 RF_BINARY="${RF_VENV}/bin/robot"
 YQ_BINARY="${RF_VENV}/bin/yq"
@@ -88,7 +88,7 @@ if [ "${STRESS_TESTING:-}" ]; then
     SSH_PORT=$("${YQ_BINARY}" '.SSH_PORT' "${SCRIPTDIR}"/rf_variables.yaml)
     SSH_PKEY=$("${YQ_BINARY}" '.SSH_PRIV_KEY' "${SCRIPTDIR}"/rf_variables.yaml)
 
-    "${SCRIPTDIR}"/bin/stress_testing.sh -e "${CONDITION}" -v "${VALUE}" -h "${SSH_HOST}" -u "${SSH_USER}" -p "${SSH_PORT}" -k "${SSH_PKEY}"
+    "${SCRIPTDIR}"/bin/stress_testing.sh -ex "${CONDITION}" -v "${VALUE}" -h "${SSH_HOST}" -u "${SSH_USER}" -p "${SSH_PORT}" -k "${SSH_PKEY}"
 fi
 
 set -x
