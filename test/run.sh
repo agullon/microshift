@@ -68,7 +68,7 @@ export DEST_DIR="${RF_VENV}"
 "${ROOTDIR}/scripts/fetch_tools.sh" yq
 
 RF_BINARY="${RF_VENV}/bin/robot"
-YQ_BINARY="${RF_VENV}/bin/yq"
+YQ_BINARY="${RF_VENV}/yq"
 
 cd "${SCRIPTDIR}" || (echo "Did not find ${SCRIPTDIR}" 1>&2; exit 1)
 
