@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -x -euo pipefail
 IFS=$'\n\t'
 
 ARCH="$(uname -m)"
