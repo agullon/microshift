@@ -3,7 +3,7 @@
 # This script enable Stress conditions at OS level in local or remote host
 # limiting resources (latency, bandwidth, packet loss, memory, disk...)
 
-set -uo pipefail
+set -x -uo pipefail
 
 SCRIPT_NAME=$(basename "$0")
 WONDERSHAPER="/usr/local/bin/wondershaper"

@@ -1,30 +1,34 @@
-- cluster-network-operator embedded-component 0196de9b213cf462c9f08685a72b58e22e862f85 to 45bc1ab8881c23f6bde187ea544861240925f632
-  - 1bb16ff 2024-01-11T16:15:26+01:00 Render IPsec MachineConfig after cluster settles with MachineConfigs
-  - 97ba1b2 2023-12-19T17:53:38+01:00 remove microshift folder, since CNO doesn't manage it
+- oc image-arm64 6d67575448725bb154dcdaf5f78787c8516d47bf to 79dc671bdaeafa74b92f14ad9f6d84e344608034
+  - d1e57c01 2024-01-30T16:25:01+03:00 Copy oc.rhel8 instead of symlink
+  - 7333b720 2024-01-30T08:14:36+03:00 Bump joelanford/ignore to bump go-git to 5.11.0
 
-- kubernetes embedded-component 1e00cd0f1770004e5ce0e0394ae9cb378c0abc13 to 913d16a5d9fb76dfb617551d46b8c361a7128d3f
-  - da9dd58b5 2024-01-11T17:44:04+01:00 UPSTREAM: <carry>: update test rules
+- router image-arm64 fcead817a0181a6326c15c8bd2e31b5fb3acdc14 to ba0be509f8cf8ea0d30540d69bbb20ae5087cc08
+  - 5a5b3e2 2024-01-31T20:48:45-05:00 OCPBUGS-26539: Reject routes with MD5 certs
 
-- machine-config-operator embedded-component 8c4ca51b2f9c22c4dc14092166e0d454ba1401b7 to 81b767ca8e0379863bde61ba40f318afe57d292e
-  - 3f0a69f3 2024-01-03T16:40:55-05:00 OCPBUGS-5452: If node is not in pool, error
+- ovn-kubernetes image-arm64 e8f87e81e05164cc0a93a2d90d17c43fda35ecb2 to 0ef25f9bee6edc008e3742ae4d6299f9e3cad0e9
+  - 71d6716 2024-01-30T11:18:51+01:00 Use full datapath name when querying datapaths with ovs-appctl
+  - fd5fafa 2024-01-30T00:48:11+01:00 github: Remove pointless Install KIND step from periodic jobs.
+  - 0396f39 2024-01-30T00:05:48+01:00 github: Remove periodic k8s job.
+  - de02f0d 2024-01-30T00:02:27+01:00 github: Don't setup Go if the master build is cached.
+  - 3bd4e9e 2024-01-30T00:02:27+01:00 github: Cache go dependencies to avoid warnings.
+  - c5910b1 2024-01-29T22:25:38+01:00 github: Remove unsupported skip-go-installation from linter.
+  - c2c3597 2024-01-29T22:25:38+01:00 github: Replace deprecated set-output.
+  - 897ba1b 2024-01-29T22:25:38+01:00 github: Update versions of docker action dependencies (Node.js 20).
+  - 501b8ad 2024-01-29T22:25:38+01:00 github: Update versions of action dependencies (Node.js 20).
+  - bc05711 2024-01-29T18:37:46+01:00 Remove exclude external lb label from control-plane nodes
+  - a1cdfb3 2024-01-29T11:34:10+01:00 Don't pin nodePorts in efw e2e's
+  - 84a5a83 2024-01-29T11:34:10+01:00 Move EFW e2e tests into its own file
+  - ccb7404 2024-01-24T13:31:37-05:00 correctly clean up hybrid-overlay on during node add
+  - 665e3b0 2024-01-23T12:15:32-08:00 README.md: Make it easier to get started.
+  - de0cd0e 2024-01-18T15:36:51+01:00 Add UTs for session affinity config's
+  - 28984e5 2024-01-18T15:36:51+01:00 Vendor in the files from k8s
+  - 88a5140 2024-01-18T15:36:51+01:00 Support permanent session affinity
+  - 4908b70 2024-01-10T19:58:07+01:00 Update networkpolicy tests data generation. Pass parameters in a structure to avoid changing function calls for every new data tweak. Part 2: update defalt deny ACLs builder.
+  - 9439537 2024-01-10T19:43:12+01:00 Update networkpolicy tests data generation. Pass parameters in a structure to avoid changing function calls for every new data tweak. Part 1: update policy ACLs builder.
+  - 9e1a765 2024-01-10T18:25:17+01:00 Rename egress ip test variables to not interfere with popular variable names.
+  - 26bdeca 2024-01-10T16:07:02+01:00 Separate stale acls testing and building from the policy_test. We used to build new acl and update it to make it "stale". That means we have to change stale acls generation with every current acl format change.
+  - c2588eb 2024-01-10T16:06:58+01:00 Namespace address sets don't have hostNetwork pod ips, while Network Policies do add hostNetwork pods to their own address sets. An attempt to unify this behaviour ended up breaking customers relying on the previous logic, so we have to keep it. The logic on when to use namespace address sets was restored. It is applied when podSelector is nil. That means that peer ``` to:     - namespaceSelector: <ns selector> ``` won't include hostNetwork pods, while peer ``` to:     - namespaceSelector: <ns selector>       podSelector: {} ``` will. You can find 2 new unit tests verifying this behaviour.
 
-- operator-framework-olm embedded-component 0081ef32987ed53e18b4bc48edc4919080238e1e to a6d77a19bec8c667695df8ef8ddc234b2e63dfd3
-  - 62d2a7c8 2024-01-12T07:30:54-07:00 go.mod: update metadata
-  - 9cf02638 2024-01-12T07:30:35-07:00 Updating operator-registry-container image to be consistent with ART for 4.16 Reconciling with https://github.com/openshift/ocp-build-data/tree/bdea42c1a90f912d46961e65074c6a675cfb896b/images/operator-registry.yml
-
-- oc image-amd64 f3c090fb1f9ca2a57aa37cf58e2b80cf900d2abd to f5542cb40b186c17de4a2b7377584094f14fac97
-  - 988a1757 2024-01-11T16:22:09-05:00 report kubectl version to the release controller
-  - f237103d 2024-01-11T15:33:31-05:00 add markdown representation of features
-  - 5b8c90f4 2024-01-11T13:19:41-05:00 add information about featuregate diff in a particular release
-  - 06d13215 2024-01-08T10:56:35+03:00 Skip rhel9 binary not found error for older releases
-  - 10b06af4 2024-01-05T09:41:25+03:00 Allow extracted binary name can be set to different
-  - 70101593 2024-01-04T16:53:14+03:00 Generate RHEL8 based oc and add as target to extract
-  - 129da484 2024-01-04T11:06:19+03:00 Add RHEL9 oc as linux command in target list
-  - e17fb41e 2024-01-04T11:06:19+03:00 Skip release-arch and arch type collision per command
-
-- router image-amd64 00f1690d49de86206bee1a54c9153747565b4186 to fcead817a0181a6326c15c8bd2e31b5fb3acdc14
-  - ca7f0bb 2023-12-21T05:04:11+00:00 Updating ose-haproxy-router-base-container image to be consistent with ART for 4.16 Reconciling with https://github.com/openshift/ocp-build-data/tree/af2133c5194e28075efb48f4b508a98759b079d2/images/ose-haproxy-router-base.yml
-
-- kubernetes image-amd64 1e00cd0f1770004e5ce0e0394ae9cb378c0abc13 to 913d16a5d9fb76dfb617551d46b8c361a7128d3f
-  - da9dd58b5 2024-01-11T17:44:04+01:00 UPSTREAM: <carry>: update test rules
+- kubernetes image-arm64 5a4819c6048e42515c3c5538b723ba6272440eee to 2f773e8d16da18d91d717cb7e1aca3d000396e2d
+  - 5b264b55f 2024-01-31T10:14:51+00:00 UPSTREAM: <carry>: Add Dockerfile to buld kube-apiserver for openshift-install architectures
 

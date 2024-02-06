@@ -65,7 +65,13 @@ run_command_on_vm() {
     local -r ip=$(get_vm_property "${vmname}" ip)
     local -r ssh_port=$(get_vm_property "${vmname}" ssh_port)
 
-    ssh "redhat@${ip}" -p "${ssh_port}" -t "${command}"
+    local term_opt=""
+    if [ -t 0 ] ; then
+        # Allocate pseudo-terminal for SSH commands when stdin is a terminal
+        # Necessary in devenv for entering input i.e. system registration, etc.
+        term_opt="-t"
+    fi
+    ssh "redhat@${ip}" -p "${ssh_port}" ${term_opt} "${command}"
 }
 
 copy_file_to_vm() {
@@ -137,19 +143,21 @@ sos_report_for_vm() {
     # version.
     cat - >/tmp/sos-wrapper.sh <<EOF
 #!/usr/bin/env bash
-if [ -f /usr/bin/microshift-sos-report ]; then
-    sudo /usr/bin/microshift-sos-report
+if ! hash sos ; then
+    echo "WARNING: The sos command does not exist"
+elif [ -f /usr/bin/microshift-sos-report ]; then
+    /usr/bin/microshift-sos-report || echo "WARNING: The /usr/bin/microshift-sos-report script failed"
 else
-    sudo chmod +x /tmp/microshift-sos-report.sh
-    sudo PROFILES=network,security /tmp/microshift-sos-report.sh
+    chmod +x /tmp/microshift-sos-report.sh
+    PROFILES=network,security /tmp/microshift-sos-report.sh || echo "WARNING: The /tmp/microshift-sos-report.sh script failed"
 fi
-sudo chmod +r /tmp/sosreport*
+chmod +r /tmp/sosreport-* || echo "WARNING: The sos report files do not exist in /tmp"
 EOF
     copy_file_to_vm "${vmname}" "/tmp/sos-wrapper.sh" "/tmp/sos-wrapper.sh"
     copy_file_to_vm "${vmname}" "${ROOTDIR}/scripts/microshift-sos-report.sh" "/tmp/microshift-sos-report.sh"
     run_command_on_vm "${vmname}" "sudo bash -x /tmp/sos-wrapper.sh"
     mkdir -p "${vmdir}/sos"
-    scp "redhat@${ip}:/tmp/sosreport*.tar.xz" "${vmdir}/sos/"
+    scp "redhat@${ip}:/tmp/sosreport-*" "${vmdir}/sos/" || echo "WARNING: Ignoring an error when copying sos report files"
 }
 
 # Public function to render a unique kickstart from a template for a
@@ -169,40 +177,45 @@ prepare_kickstart() {
     local boot_commit_ref="$3"
     local fips_enabled=${4:-false}
 
-    local full_vmname
-    local output_file
-    local vm_hostname
-    local fips_command=""
+    local -r full_vmname="$(full_vm_name "${vmname}")"
+    local -r output_dir="${SCENARIO_INFO_DIR}/${SCENARIO}/vms/${vmname}"
+    local -r vm_hostname="${full_vmname/./-}"
     local -r hostname=$(hostname)
 
-    full_vmname="$(full_vm_name "${vmname}")"
-    output_file="${SCENARIO_INFO_DIR}/${SCENARIO}/vms/${vmname}/kickstart.ks"
-    vm_hostname="${full_vmname/./-}"
+    local fips_command=""
 
-    echo "Preparing kickstart file ${template} ${output_file}"
+    echo "Preparing kickstart file ${template} at ${output_dir}"
     if [ ! -f "${KICKSTART_TEMPLATE_DIR}/${template}" ]; then
-        # FIXME: Perhaps we want a default kickstart to reduce duplication?
         error "No ${template} in ${KICKSTART_TEMPLATE_DIR}"
         record_junit "${vmname}" "prepare_kickstart" "no-template"
         exit 1
     fi
-    mkdir -p "$(dirname "${output_file}")"
     if "${fips_enabled}"; then
         fips_command="fips-mode-setup --enable"
     fi
-    # shellcheck disable=SC2002   # useless cat
-    cat "${KICKSTART_TEMPLATE_DIR}/${template}" \
-        | sed -e "s/REPLACE_LVM_SYSROOT_SIZE/${LVM_SYSROOT_SIZE}/g" \
-              -e "s|REPLACE_OSTREE_SERVER_URL|${WEB_SERVER_URL}/repo|g" \
-              -e "s|REPLACE_BOOT_COMMIT_REF|${boot_commit_ref}|g" \
-              -e "s|REPLACE_PULL_SECRET|${PULL_SECRET_CONTENT}|g" \
-              -e "s|REPLACE_HOST_NAME|${vm_hostname}|g" \
-              -e "s|REPLACE_REDHAT_AUTHORIZED_KEYS|${REDHAT_AUTHORIZED_KEYS}|g" \
-              -e "s|REPLACE_PUBLIC_IP|${PUBLIC_IP}|g" \
-              -e "s|REPLACE_FIPS_COMMAND|${fips_command}|g" \
-              -e "s|REPLACE_ENABLE_MIRROR|${ENABLE_REGISTRY_MIRROR}|g" \
-              -e "s|REPLACE_MIRROR_HOSTNAME|${hostname}|g" \
-              > "${output_file}"
+
+    mkdir -p "${output_dir}"
+    for ifile in "${KICKSTART_TEMPLATE_DIR}/${template}" "${KICKSTART_TEMPLATE_DIR}"/includes/*.cfg ; do
+        local output_file
+        if [[ ${ifile} == *.cfg ]] ; then
+            output_file="${output_dir}/$(basename "${ifile}")"
+        else
+            # The main kickstart file name is hardcoded to kickstart.ks
+            output_file="${output_dir}/kickstart.ks"
+        fi
+
+        sed -e "s|REPLACE_LVM_SYSROOT_SIZE|${LVM_SYSROOT_SIZE}|g" \
+            -e "s|REPLACE_OSTREE_SERVER_URL|${WEB_SERVER_URL}/repo|g" \
+            -e "s|REPLACE_BOOT_COMMIT_REF|${boot_commit_ref}|g" \
+            -e "s|REPLACE_PULL_SECRET|${PULL_SECRET_CONTENT}|g" \
+            -e "s|REPLACE_HOST_NAME|${vm_hostname}|g" \
+            -e "s|REPLACE_REDHAT_AUTHORIZED_KEYS|${REDHAT_AUTHORIZED_KEYS}|g" \
+            -e "s|REPLACE_PUBLIC_IP|${PUBLIC_IP}|g" \
+            -e "s|REPLACE_FIPS_COMMAND|${fips_command}|g" \
+            -e "s|REPLACE_ENABLE_MIRROR|${ENABLE_REGISTRY_MIRROR}|g" \
+            -e "s|REPLACE_MIRROR_HOSTNAME|${hostname}|g" \
+            "${ifile}" > "${output_file}"
+    done
     record_junit "${vmname}" "prepare_kickstart" "OK"
 }
 
@@ -370,16 +383,11 @@ launch_vm() {
     local -r full_vmname="$(full_vm_name "${vmname}")"
     local -r kickstart_url="${WEB_SERVER_URL}/scenario-info/${SCENARIO}/vms/${vmname}/kickstart.ks"
 
-    # Checking web server for kickstart file
-    if ! curl -o /dev/null "${kickstart_url}" >/dev/null 2>&1; then
-        error "Failed to load kickstart file from ${kickstart_url}"
-        exit 1
-    fi
-
-    echo "Creating ${full_vmname}"
     local -r vm_wait_timeout=$(( VM_BOOT_TIMEOUT / 60 ))
     local -r vm_pool_name="${VM_POOL_BASENAME}-${SCENARIO}"
     local -r vm_pool_dir="${VM_DISK_BASEDIR}/${vm_pool_name}"
+
+    echo "Creating ${full_vmname}"
 
     # Create the pool if it does not exist
     if [ ! -d "${vm_pool_dir}" ] ; then
@@ -406,16 +414,24 @@ launch_vm() {
     done
     if [ -z "${vm_network_args}" ] ; then
         vm_network_args="--network none"
-
-        # Kickstart should be downloaded and injected into the ISO
-        local -r kickstart_file=$(mktemp /tmp/kickstart.XXXXXXXX.ks)
-        curl -s "${kickstart_url}" > "${kickstart_file}"
-
-        vm_extra_args+=" inst.ks=file:/$(basename "${kickstart_file}")"
-        vm_initrd_inject="--initrd-inject ${kickstart_file}"
-    else
-        vm_extra_args+=" inst.ks=${kickstart_url}"
     fi
+
+    # Inject the kickstart file and all its includes into the image
+    local -r kickstart_file=$(mktemp /tmp/kickstart.XXXXXXXX.ks)
+    local -r kickstart_idir=$(mktemp -d /tmp/kickstart-includes.XXXXXXXX)
+    # Download and inject the kickstart main file
+    local -r http_code=$(curl -o "${kickstart_file}" -s -w "%{http_code}" "${kickstart_url}")
+    if [ "${http_code}" -ne 200 ] ; then
+        error "Failed to load kickstart file from ${kickstart_url}"
+        exit 1
+    fi
+    vm_extra_args+=" inst.ks=file:/$(basename "${kickstart_file}")"
+    vm_initrd_inject+=" --initrd-inject ${kickstart_file}"
+    # Download and inject all the kickstart include files
+    wget -r -q -nd -A "*.cfg" -P "${kickstart_idir}" "$(dirname "${kickstart_url}")"
+    for cfg_file in "${kickstart_idir}"/*.cfg ; do
+        vm_initrd_inject+=" --initrd-inject ${cfg_file}"
+    done
 
     # Implement retries on VM creation until the problem is fixed
     # See https://github.com/virt-manager/virt-manager/issues/498
@@ -470,6 +486,14 @@ launch_vm() {
     if ${vm_created} ; then
         record_junit "${vmname}" "install_vm" "OK"
     else
+        # Make sure to stop the VM on error before the control is returned.
+        # This is necessary not to leave running qemu child processes so that
+        # the caller considers the script fully complete.
+        # Note: this option is disabled automatically in interactive sessions
+        # for easier troubleshooting of failed installations.
+        if [ ! -t 0 ] ; then
+            sudo virsh destroy "${full_vmname}" || true
+        fi
         record_junit "${vmname}" "install_vm" "FAILED"
         return 1
     fi
