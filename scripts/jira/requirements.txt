@@ -1,2 +1,2 @@
 jira>=3.5.0
-PyGithub==1.59.0
+PyGithub==2.5.0
