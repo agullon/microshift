@@ -25,7 +25,7 @@ import (
 	"strings"
 	"text/template"
 
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 	"k8s.io/klog/v2"
 
 	embedded "github.com/openshift/microshift/assets"
