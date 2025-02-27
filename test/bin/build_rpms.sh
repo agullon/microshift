@@ -113,6 +113,8 @@ make_repo() {
 # the cached artifacts are not present locally, an empty brew source directory
 # is created so that other procedures do not fail.
 download_brew_rpms() {
+    local -r ver=$1
+
     mkdir -p "${BREW_RPM_SOURCE}"
     if "${SCRIPTDIR}/manage_brew_rpms.sh" access ; then
         # shellcheck source=test/bin/common_versions.sh
@@ -122,7 +124,7 @@ download_brew_rpms() {
         rm -rf "${BREW_RPM_SOURCE}"
         # Run the download procedure
         bash -x "${SCRIPTDIR}/../../scripts/fetch_tools.sh" brew
-        bash -x "${SCRIPTDIR}/manage_brew_rpms.sh" download "4.${MINOR_VERSION}" "${BREW_RPM_SOURCE}"
+        bash -x "${SCRIPTDIR}/manage_brew_rpms.sh" download "${ver}" "${BREW_RPM_SOURCE}"
     else
         echo "WARNING: The Brew Hub site is not accessible, skipping the download"
     fi
@@ -142,9 +144,11 @@ create_local_repo() {
          dnf clean all
 }
 
-#
-# Main
-#
-build_rpms
-download_brew_rpms
-create_local_repo
+
+if [ $# -eq 0 ]; then
+    build_rpms
+    download_brew_rpms "4.${MINOR_VERSION}"
+    create_local_repo
+fi
+
+"${@}"
