@@ -36,7 +36,7 @@ require (
 	k8s.io/kube-aggregator v0.32.1
 	k8s.io/kube-openapi v0.0.0-20241105132330-32ad38e42d3f
 	k8s.io/kubectl v0.0.0
-	k8s.io/kubernetes v1.32.1
+	k8s.io/kubernetes v1.32.3
 	sigs.k8s.io/yaml v1.4.0
 )
 
