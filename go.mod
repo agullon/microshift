@@ -55,7 +55,7 @@ require (
 	cel.dev/expr v0.18.0 // indirect
 	github.com/Microsoft/hnslib v0.0.8 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
-	github.com/containerd/errdefs v0.1.0 // indirect
+	github.com/containerd/errdefs v0.3.0 // indirect
 	github.com/containerd/log v0.1.0 // indirect
 	github.com/felixge/fgprof v0.9.4 // indirect
 	github.com/fxamacker/cbor/v2 v2.7.0 // indirect
