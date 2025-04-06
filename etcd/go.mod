@@ -104,9 +104,9 @@ require (
 	github.com/xiang90/probing v0.0.0-20221125231312-a49e3df8f510 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
 	go.etcd.io/bbolt v1.3.11 // indirect
-	go.etcd.io/etcd/api/v3 v3.5.17
-	go.etcd.io/etcd/client/pkg/v3 v3.5.17 // indirect
-	go.etcd.io/etcd/client/v2 v2.305.17 // indirect
+	go.etcd.io/etcd/api/v3 v3.5.21
+	go.etcd.io/etcd/client/pkg/v3 v3.5.21 // indirect
+	go.etcd.io/etcd/client/v2 v2.305.21 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.17 // indirect
 	go.etcd.io/etcd/pkg/v3 v3.5.17 // indirect
 	go.etcd.io/etcd/raft/v3 v3.5.17 // indirect
