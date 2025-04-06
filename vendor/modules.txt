@@ -2028,7 +2028,7 @@ k8s.io/klog/v2/internal/severity
 k8s.io/klog/v2/internal/sloghandler
 k8s.io/klog/v2/internal/verbosity
 k8s.io/klog/v2/textlogger
-# k8s.io/kms v0.32.1 => github.com/openshift/kubernetes/staging/src/k8s.io/kms v0.0.0-20250129203733-cc13ce0f2f8b
+# k8s.io/kms v0.32.3 => github.com/openshift/kubernetes/staging/src/k8s.io/kms v0.0.0-20250129203733-cc13ce0f2f8b
 ## explicit; go 1.23.0
 k8s.io/kms/apis/v1beta1
 k8s.io/kms/apis/v2
