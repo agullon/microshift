@@ -48,8 +48,8 @@ github.com/evanphx/json-patch
 # github.com/exponent-io/jsonpath v0.0.0-20210407135951-1de76d718b3f
 ## explicit; go 1.15
 github.com/exponent-io/jsonpath
-# github.com/fxamacker/cbor/v2 v2.7.0
-## explicit; go 1.17
+# github.com/fxamacker/cbor/v2 v2.8.0
+## explicit; go 1.20
 github.com/fxamacker/cbor/v2
 # github.com/go-errors/errors v1.4.2
 ## explicit; go 1.14
