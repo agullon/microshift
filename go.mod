@@ -199,7 +199,7 @@ require (
 	k8s.io/dynamic-resource-allocation v0.0.0 // indirect
 	k8s.io/endpointslice v0.0.0 // indirect
 	k8s.io/externaljwt v0.0.0 // indirect
-	k8s.io/gengo/v2 v2.0.0-20240911193312-2b36238f13e9 // indirect
+	k8s.io/gengo/v2 v2.0.0-20250207200755-1244d31929d7 // indirect
 	k8s.io/kms v0.32.1 // indirect
 	k8s.io/kube-controller-manager v0.0.0 // indirect
 	k8s.io/kube-scheduler v0.0.0 // indirect
