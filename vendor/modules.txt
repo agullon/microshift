@@ -1984,7 +1984,7 @@ k8s.io/controller-manager/pkg/leadermigration/options
 k8s.io/cri-api/pkg/apis
 k8s.io/cri-api/pkg/apis/runtime/v1
 k8s.io/cri-api/pkg/errors
-# k8s.io/cri-client v0.0.0 => github.com/openshift/kubernetes/staging/src/k8s.io/cri-client v0.0.0-20250129203733-cc13ce0f2f8b
+# k8s.io/cri-client v0.32.3 => github.com/openshift/kubernetes/staging/src/k8s.io/cri-client v0.0.0-20250129203733-cc13ce0f2f8b
 ## explicit; go 1.23.0
 k8s.io/cri-client/pkg
 k8s.io/cri-client/pkg/internal
