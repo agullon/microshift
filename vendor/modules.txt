@@ -2007,7 +2007,7 @@ k8s.io/endpointslice/metrics
 k8s.io/endpointslice/topologycache
 k8s.io/endpointslice/trafficdist
 k8s.io/endpointslice/util
-# k8s.io/externaljwt v0.0.0 => github.com/openshift/kubernetes/staging/src/k8s.io/externaljwt v0.0.0-20250129203733-cc13ce0f2f8b
+# k8s.io/externaljwt v0.32.3 => github.com/openshift/kubernetes/staging/src/k8s.io/externaljwt v0.0.0-20250129203733-cc13ce0f2f8b
 ## explicit; go 1.23.0
 k8s.io/externaljwt/apis/v1alpha1
 # k8s.io/gengo/v2 v2.0.0-20240911193312-2b36238f13e9
