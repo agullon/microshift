@@ -2,7 +2,7 @@ module github.com/openshift/microshift
 
 go 1.23.0
 
-toolchain go1.23.3
+toolchain go1.24.2
 
 require (
 	github.com/apparentlymart/go-cidr v1.1.0
