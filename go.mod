@@ -68,7 +68,7 @@ require (
 
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 // indirect
-	github.com/Azure/go-ntlmssp v0.0.0-20211209120228-48547f28849e // indirect
+	github.com/Azure/go-ntlmssp v0.0.0-20221128193559-754e69321358 // indirect
 	github.com/JeffAshton/win_pdh v0.0.0-20161109143554-76bb4ee9f0ab // indirect
 	github.com/MakeNowJust/heredoc v1.0.0 // indirect
 	github.com/Microsoft/go-winio v0.6.2 // indirect
@@ -95,9 +95,9 @@ require (
 	github.com/exponent-io/jsonpath v0.0.0-20210407135951-1de76d718b3f // indirect
 	github.com/fatih/camelcase v1.0.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	github.com/go-asn1-ber/asn1-ber v1.5.4 // indirect
+	github.com/go-asn1-ber/asn1-ber v1.5.7 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
-	github.com/go-ldap/ldap/v3 v3.4.3 // indirect
+	github.com/go-ldap/ldap/v3 v3.4.10 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
@@ -176,7 +176,7 @@ require (
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/mod v0.22.0 // indirect
-	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/oauth2 v0.24.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/term v0.27.0 // indirect
