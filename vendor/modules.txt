@@ -1994,7 +1994,7 @@ k8s.io/cri-client/pkg/util
 ## explicit; go 1.23.0
 k8s.io/csi-translation-lib
 k8s.io/csi-translation-lib/plugins
-# k8s.io/dynamic-resource-allocation v0.0.0 => github.com/openshift/kubernetes/staging/src/k8s.io/dynamic-resource-allocation v0.0.0-20250129203733-cc13ce0f2f8b
+# k8s.io/dynamic-resource-allocation v0.32.3 => github.com/openshift/kubernetes/staging/src/k8s.io/dynamic-resource-allocation v0.0.0-20250129203733-cc13ce0f2f8b
 ## explicit; go 1.23.0
 k8s.io/dynamic-resource-allocation/api
 k8s.io/dynamic-resource-allocation/cel
