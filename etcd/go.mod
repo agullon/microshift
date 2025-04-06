@@ -14,7 +14,7 @@ require (
 	github.com/openshift/api v0.0.0-20250124212313-a770960d61e0
 	github.com/openshift/build-machinery-go v0.0.0-20250102153059-e85a1a7ecb5c
 	github.com/spf13/cobra v1.8.1
-	go.etcd.io/etcd/server/v3 v3.5.16
+	go.etcd.io/etcd/server/v3 v3.5.21
 	k8s.io/apimachinery v0.32.1
 	k8s.io/cli-runtime v0.0.0
 	k8s.io/component-base v0.32.1
