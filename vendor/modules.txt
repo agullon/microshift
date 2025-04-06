@@ -809,7 +809,7 @@ go.etcd.io/etcd/client/pkg/v3/systemd
 go.etcd.io/etcd/client/pkg/v3/tlsutil
 go.etcd.io/etcd/client/pkg/v3/transport
 go.etcd.io/etcd/client/pkg/v3/types
-# go.etcd.io/etcd/client/v3 v3.5.16 => github.com/openshift/etcd/client/v3 v3.5.1-0.20241118170732-914783cae63a
+# go.etcd.io/etcd/client/v3 v3.5.21 => github.com/openshift/etcd/client/v3 v3.5.1-0.20241118170732-914783cae63a
 ## explicit; go 1.22
 go.etcd.io/etcd/client/v3
 go.etcd.io/etcd/client/v3/credentials

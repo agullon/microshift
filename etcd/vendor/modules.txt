@@ -304,7 +304,7 @@ go.etcd.io/etcd/client/pkg/v3/types
 # go.etcd.io/etcd/client/v2 v2.305.17
 ## explicit; go 1.22
 go.etcd.io/etcd/client/v2
-# go.etcd.io/etcd/client/v3 v3.5.17 => github.com/openshift/etcd/client/v3 v3.5.1-0.20241118170732-914783cae63a
+# go.etcd.io/etcd/client/v3 v3.5.21 => github.com/openshift/etcd/client/v3 v3.5.1-0.20241118170732-914783cae63a
 ## explicit; go 1.22
 go.etcd.io/etcd/client/v3
 go.etcd.io/etcd/client/v3/concurrency
