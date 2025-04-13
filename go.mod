@@ -42,7 +42,7 @@ require (
 
 require (
 	github.com/coreos/go-systemd/v22 v22.5.0
-	github.com/evanphx/json-patch v4.12.0+incompatible
+	github.com/evanphx/json-patch v5.9.11+incompatible
 	github.com/fsnotify/fsnotify v1.8.0
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/utils v0.0.0-20241104100929-3ea5e8cea738
