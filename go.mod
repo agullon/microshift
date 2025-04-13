@@ -7,7 +7,7 @@ toolchain go1.23.3
 require (
 	github.com/apparentlymart/go-cidr v1.1.0
 	github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e // openshift-controller-manager
-	github.com/google/go-cmp v0.6.0
+	github.com/google/go-cmp v0.7.0
 	github.com/miekg/dns v1.1.62 // microshift
 	github.com/openshift/api v0.0.0-20250124212313-a770960d61e0
 	github.com/openshift/build-machinery-go v0.0.0-20250102153059-e85a1a7ecb5c
@@ -22,7 +22,7 @@ require (
 	github.com/vishvananda/netlink v1.3.1-0.20240905180732-b1ce50cfa9be
 	go.etcd.io/etcd/client/pkg/v3 v3.5.17
 	go.etcd.io/etcd/client/v3 v3.5.16
-	golang.org/x/sys v0.28.0
+	golang.org/x/sys v0.30.0
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/api v0.32.1
 	k8s.io/apiextensions-apiserver v0.32.1
@@ -122,7 +122,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/karrick/godirwalk v1.17.0 // indirect
-	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/libopenstorage/openstorage v1.0.0 // indirect
 	github.com/liggitt/tabwriter v0.0.0-20181228230101-89fcab3d43de // indirect
@@ -147,9 +146,9 @@ require (
 	github.com/pkg/profile v1.7.0 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/pquerna/cachecontrol v0.1.0 // indirect
-	github.com/prometheus/client_golang v1.20.5 // indirect
+	github.com/prometheus/client_golang v1.22.0 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
-	github.com/prometheus/common v0.61.0 // indirect
+	github.com/prometheus/common v0.62.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -176,7 +175,7 @@ require (
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/mod v0.22.0 // indirect
-	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/oauth2 v0.24.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/term v0.27.0 // indirect
@@ -186,7 +185,7 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20241216192217-9240e9c98484 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241209162323-e6fa225c2576 // indirect
 	google.golang.org/grpc v1.69.0 // indirect
-	google.golang.org/protobuf v1.36.0 // indirect
+	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
