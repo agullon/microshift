@@ -32,7 +32,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.24.0 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/mxk/go-flowrate v0.0.0-20140419014527-cca7078d478f // indirect
-	github.com/openshift/library-go v0.0.0-20250127111945-0f76e23726cd // indirect
+	github.com/openshift/library-go 7de7fae45594 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/vishvananda/netlink v1.3.1-0.20240905180732-b1ce50cfa9be // indirect
 	github.com/vishvananda/netns v0.0.4 // indirect
