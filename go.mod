@@ -11,7 +11,7 @@ require (
 	github.com/miekg/dns v1.1.62 // microshift
 	github.com/openshift/api v0.0.0-20250124212313-a770960d61e0
 	github.com/openshift/build-machinery-go v0.0.0-20250102153059-e85a1a7ecb5c
-	github.com/openshift/client-go v0.0.0-20250125113824-8e1f0b8fa9a7
+	github.com/openshift/client-go 900624865677
 	github.com/openshift/cluster-policy-controller v0.0.0-20250120184244-f5a25728ff43
 	github.com/openshift/library-go v0.0.0-20250127111945-0f76e23726cd
 	github.com/openshift/route-controller-manager v0.0.0-20241218160919-bc97534a12a7
