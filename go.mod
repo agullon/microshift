@@ -116,7 +116,7 @@ require (
 	github.com/opencontainers/runc v1.2.1 // indirect
 	github.com/opencontainers/runtime-spec v1.2.0 // indirect
 	github.com/opencontainers/selinux v1.11.1 // indirect
-	github.com/openshift/apiserver-library-go v0.0.0-20250127121756-dc9a973f14ce // indirect
+	github.com/openshift/apiserver-library-go v0.0.0-20250502092109-8d341e94467d // indirect
 	github.com/peterbourgon/diskv v2.0.1+incompatible // indirect
 	github.com/pquerna/cachecontrol v0.1.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
