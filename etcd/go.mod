@@ -11,7 +11,7 @@ replace (
 )
 
 require (
-	github.com/openshift/api v0.0.0-20250213010142-f5b09d13c01f
+	github.com/openshift/api v0.0.0-20250320170726-75d64d71980b
 	github.com/openshift/build-machinery-go v0.0.0-20250211133638-a00a772ae1a2
 	github.com/spf13/cobra v1.8.1
 	go.etcd.io/etcd/server/v3 v3.5.16
@@ -32,7 +32,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.25.1 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/mxk/go-flowrate v0.0.0-20140419014527-cca7078d478f // indirect
-	github.com/openshift/library-go v0.0.0-20250217144305-c917e6d528b2 // indirect
+	github.com/openshift/library-go v0.0.0-20250623173617-60108c9616bf // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/vishvananda/netlink v1.3.1-0.20250206174618-62fb240731fa // indirect
 	github.com/vishvananda/netns v0.0.4 // indirect

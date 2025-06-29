@@ -195,7 +195,7 @@ github.com/munnerz/goautoneg
 # github.com/mxk/go-flowrate v0.0.0-20140419014527-cca7078d478f
 ## explicit
 github.com/mxk/go-flowrate/flowrate
-# github.com/openshift/api v0.0.0-20250213010142-f5b09d13c01f
+# github.com/openshift/api v0.0.0-20250320170726-75d64d71980b
 ## explicit; go 1.23.0
 github.com/openshift/api/config/v1
 github.com/openshift/api/operator/v1
@@ -209,7 +209,7 @@ github.com/openshift/build-machinery-go/make/targets/golang
 github.com/openshift/build-machinery-go/make/targets/openshift
 github.com/openshift/build-machinery-go/make/targets/openshift/operator
 github.com/openshift/build-machinery-go/scripts
-# github.com/openshift/library-go v0.0.0-20250217144305-c917e6d528b2
+# github.com/openshift/library-go v0.0.0-20250623173617-60108c9616bf
 ## explicit; go 1.23.0
 github.com/openshift/library-go/pkg/crypto
 github.com/openshift/library-go/pkg/operator/apiserver/audit
