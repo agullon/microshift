@@ -9,9 +9,9 @@ require (
 	github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e // openshift-controller-manager
 	github.com/google/go-cmp v0.6.0
 	github.com/miekg/dns v1.1.63 // microshift
-	github.com/openshift/api v0.0.0-20250213010142-f5b09d13c01f
+	github.com/openshift/api v0.0.0-20250620092249-a8cbc218cd2c
 	github.com/openshift/build-machinery-go v0.0.0-20250602125535-1b6d00b8c37c
-	github.com/openshift/client-go v0.0.0-20250131180035-f7ec47e2d87a
+	github.com/openshift/client-go v0.0.0-20250701093119-6d8e53714277
 	github.com/openshift/cluster-policy-controller v0.0.0-20250310152427-748524784686
 	github.com/openshift/library-go v0.0.0-20250217144305-c917e6d528b2
 	github.com/pkg/errors v0.9.1 // indirect
@@ -216,7 +216,7 @@ require (
 	k8s.io/gengo/v2 v2.0.0-20240911193312-2b36238f13e9 // indirect
 	k8s.io/klog/v2 v2.130.1
 	k8s.io/kubernetes v1.32.5
-	sigs.k8s.io/structured-merge-diff/v4 v4.5.0 // indirect
+	sigs.k8s.io/structured-merge-diff/v4 v4.6.0 // indirect
 )
 
 replace (

@@ -414,7 +414,7 @@ github.com/opencontainers/runtime-spec/specs-go
 github.com/opencontainers/selinux/go-selinux
 github.com/opencontainers/selinux/go-selinux/label
 github.com/opencontainers/selinux/pkg/pwalkdir
-# github.com/openshift/api v0.0.0-20250213010142-f5b09d13c01f
+# github.com/openshift/api v0.0.0-20250620092249-a8cbc218cd2c
 ## explicit; go 1.23.0
 github.com/openshift/api
 github.com/openshift/api/annotations
@@ -431,6 +431,7 @@ github.com/openshift/api/cloudnetwork/v1
 github.com/openshift/api/config
 github.com/openshift/api/config/v1
 github.com/openshift/api/config/v1alpha1
+github.com/openshift/api/config/v1alpha2
 github.com/openshift/api/console
 github.com/openshift/api/console/v1
 github.com/openshift/api/features
@@ -518,7 +519,7 @@ github.com/openshift/build-machinery-go/make/targets/golang
 github.com/openshift/build-machinery-go/make/targets/openshift
 github.com/openshift/build-machinery-go/make/targets/openshift/operator
 github.com/openshift/build-machinery-go/scripts
-# github.com/openshift/client-go v0.0.0-20250131180035-f7ec47e2d87a
+# github.com/openshift/client-go v0.0.0-20250701093119-6d8e53714277
 ## explicit; go 1.23.0
 github.com/openshift/client-go/apiserver/applyconfigurations/apiserver/v1
 github.com/openshift/client-go/apiserver/applyconfigurations/internal
@@ -556,11 +557,13 @@ github.com/openshift/client-go/build/informers/externalversions/internalinterfac
 github.com/openshift/client-go/build/listers/build/v1
 github.com/openshift/client-go/config/applyconfigurations/config/v1
 github.com/openshift/client-go/config/applyconfigurations/config/v1alpha1
+github.com/openshift/client-go/config/applyconfigurations/config/v1alpha2
 github.com/openshift/client-go/config/applyconfigurations/internal
 github.com/openshift/client-go/config/clientset/versioned
 github.com/openshift/client-go/config/clientset/versioned/scheme
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1
+github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2
 github.com/openshift/client-go/config/informers/externalversions/config/v1
 github.com/openshift/client-go/config/informers/externalversions/internalinterfaces
 github.com/openshift/client-go/config/listers/config/v1
@@ -719,7 +722,7 @@ github.com/openshift/library-go/pkg/security/ldaputil
 github.com/openshift/library-go/pkg/security/uid
 github.com/openshift/library-go/pkg/serviceability
 # github.com/openshift/route-controller-manager v0.0.0-20241218160919-bc97534a12a7 => ./deps/github.com/openshift/route-controller-manager
-## explicit; go 1.22.0
+## explicit; go 1.23.0
 github.com/openshift/route-controller-manager/pkg/cmd/controller
 github.com/openshift/route-controller-manager/pkg/cmd/route-controller-manager
 github.com/openshift/route-controller-manager/pkg/route/ingress
@@ -3158,7 +3161,7 @@ sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/validation/field
 sigs.k8s.io/kustomize/kyaml/yaml/merge2
 sigs.k8s.io/kustomize/kyaml/yaml/schema
 sigs.k8s.io/kustomize/kyaml/yaml/walk
-# sigs.k8s.io/structured-merge-diff/v4 v4.5.0
+# sigs.k8s.io/structured-merge-diff/v4 v4.6.0
 ## explicit; go 1.13
 sigs.k8s.io/structured-merge-diff/v4/fieldpath
 sigs.k8s.io/structured-merge-diff/v4/merge
