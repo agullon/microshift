@@ -6,7 +6,7 @@ toolchain go1.23.3
 
 require (
 	github.com/apparentlymart/go-cidr v1.1.0
-	github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e // openshift-controller-manager
+	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf // openshift-controller-manager
 	github.com/google/go-cmp v0.6.0
 	github.com/miekg/dns v1.1.63 // microshift
 	github.com/openshift/api v0.0.0-20250213010142-f5b09d13c01f
