@@ -205,7 +205,7 @@ github.com/mxk/go-flowrate/flowrate
 # github.com/oklog/run v1.1.0
 ## explicit; go 1.13
 github.com/oklog/run
-# github.com/openshift/api v0.0.0-20250213010142-f5b09d13c01f
+# github.com/openshift/api v0.0.0-20250320170726-75d64d71980b
 ## explicit; go 1.23.0
 github.com/openshift/api/config/v1
 github.com/openshift/api/operator/v1
@@ -219,7 +219,7 @@ github.com/openshift/build-machinery-go/make/targets/golang
 github.com/openshift/build-machinery-go/make/targets/openshift
 github.com/openshift/build-machinery-go/make/targets/openshift/operator
 github.com/openshift/build-machinery-go/scripts
-# github.com/openshift/library-go v0.0.0-20250217144305-c917e6d528b2
+# github.com/openshift/library-go v0.0.0-20250703084215-cd26fa5a3d88
 ## explicit; go 1.23.0
 github.com/openshift/library-go/pkg/crypto
 github.com/openshift/library-go/pkg/operator/apiserver/audit
