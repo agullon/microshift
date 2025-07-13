@@ -41,7 +41,7 @@ require (
 	github.com/google/go-cmp v0.6.0
 	github.com/google/gofuzz v1.2.0
 	github.com/google/uuid v1.6.0
-	github.com/ishidawataru/sctp v0.0.0-20230406120618-7ff4192f6ff2
+	github.com/ishidawataru/sctp v0.0.0-20250708014235-1989182a9425
 	github.com/libopenstorage/openstorage v1.0.0
 	github.com/lithammer/dedent v1.1.0
 	github.com/moby/ipvs v1.1.0
