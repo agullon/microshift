@@ -64,8 +64,7 @@ function copy_secrets() {
 
 function get_cache_from_s3() {
     SCENARIO_BUILD_BRANCH="main"
-    # SCENARIO_BUILD_TAG="$(date '+%y%m%d')"
-    SCENARIO_BUILD_TAG="250722"
+    SCENARIO_BUILD_TAG="$(date '+%y%m%d')"
 
     export AWS_BUCKET_NAME="microshift-build-cache-us-west-2"
 
