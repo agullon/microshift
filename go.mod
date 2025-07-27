@@ -31,7 +31,7 @@ require (
 	github.com/go-kit/kit v0.9.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/snappy v0.0.4
-	github.com/openshift/cluster-policy-controller v0.0.0-20250310152427-748524784686
+	github.com/openshift/cluster-policy-controller v0.0.0-20250725081630-3e7538547c8f
 	github.com/openshift/route-controller-manager v0.0.0-20250709131101-e148fabc13f7
 	github.com/prometheus/client_model v0.6.1
 	github.com/prometheus/common v0.62.0
