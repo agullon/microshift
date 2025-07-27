@@ -7,7 +7,7 @@ toolchain go1.22.1
 require (
 	github.com/blang/semver/v4 v4.0.0
 	github.com/openshift/api v0.0.0-20240530053948-b01900f1982a
-	github.com/openshift/build-machinery-go v0.0.0-20240419090851-af9c868bcf52
+	github.com/openshift/build-machinery-go v0.0.0-20250602125535-1b6d00b8c37c
 	github.com/openshift/client-go v0.0.0-20240528061634-b054aa794d87
 	github.com/openshift/library-go v0.0.0-20240528110646-354b673304be
 	github.com/prometheus/client_golang v1.16.0
@@ -19,6 +19,7 @@ require (
 	k8s.io/controller-manager v0.30.1
 	k8s.io/klog/v2 v2.120.1
 	k8s.io/kubernetes v1.30.1
+	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
 )
 
 require (
@@ -109,7 +110,6 @@ require (
 	k8s.io/kms v0.30.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340 // indirect
 	k8s.io/kubelet v0.30.1 // indirect
-	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.29.0 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1 // indirect
