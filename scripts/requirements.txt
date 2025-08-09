@@ -1,5 +1,5 @@
 PyGithub==1.56
-GitPython==3.1.18
+GitPython==3.1.45
 PyYAML==3.12
 tabulate==0.8.10
 tqdm==4.64.1
