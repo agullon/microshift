@@ -494,7 +494,7 @@ github.com/opencontainers/runc/libcontainer/cgroups
 github.com/opencontainers/runc/libcontainer/configs
 github.com/opencontainers/runc/libcontainer/devices
 github.com/opencontainers/runc/libcontainer/utils
-# github.com/opencontainers/runtime-spec v1.2.0
+# github.com/opencontainers/runtime-spec v1.2.1
 ## explicit
 github.com/opencontainers/runtime-spec/specs-go
 # github.com/opencontainers/selinux v1.11.1
@@ -623,15 +623,9 @@ github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1/fake
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2/fake
-github.com/openshift/client-go/config/informers/externalversions
-github.com/openshift/client-go/config/informers/externalversions/config
 github.com/openshift/client-go/config/informers/externalversions/config/v1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha2
 github.com/openshift/client-go/config/informers/externalversions/internalinterfaces
 github.com/openshift/client-go/config/listers/config/v1
-github.com/openshift/client-go/config/listers/config/v1alpha1
-github.com/openshift/client-go/config/listers/config/v1alpha2
 github.com/openshift/client-go/image/applyconfigurations/image/v1
 github.com/openshift/client-go/image/applyconfigurations/internal
 github.com/openshift/client-go/image/clientset/versioned
