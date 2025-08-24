@@ -125,7 +125,7 @@ github.com/exponent-io/jsonpath
 # github.com/fatih/camelcase v1.0.0
 ## explicit
 github.com/fatih/camelcase
-# github.com/felixge/fgprof v0.9.4
+# github.com/felixge/fgprof v0.9.5
 ## explicit; go 1.14
 github.com/felixge/fgprof
 # github.com/felixge/httpsnoop v1.0.4
