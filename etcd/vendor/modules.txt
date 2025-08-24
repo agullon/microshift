@@ -985,7 +985,7 @@ k8s.io/kubectl/pkg/validation
 # k8s.io/kubelet v1.33.2 => ../deps/github.com/openshift/kubernetes/staging/src/k8s.io/kubelet
 ## explicit; go 1.24.0
 k8s.io/kubelet/pkg/apis/deviceplugin/v1beta1
-# k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
+# k8s.io/utils v0.0.0-20250820121507-0af2bda4dd1d
 ## explicit; go 1.18
 k8s.io/utils/clock
 k8s.io/utils/exec
