@@ -49,7 +49,7 @@ require (
 	k8s.io/kube-aggregator v1.33.2
 	k8s.io/kubectl v1.33.2
 	k8s.io/kubelet v1.33.2
-	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
+	k8s.io/utils v0.0.0-20250820121507-0af2bda4dd1d
 	sigs.k8s.io/kube-storage-version-migrator v0.0.6-0.20230721195810-5c8923c5ff96
 	sigs.k8s.io/kustomize/api v0.19.0
 	sigs.k8s.io/kustomize/kyaml v0.19.0
