@@ -14,7 +14,7 @@ require (
 	go.uber.org/automaxprocs v1.6.0
 	golang.org/x/mod v0.23.0
 	gotest.tools/gotestsum v1.12.0
-	honnef.co/go/tools v0.6.0
+	honnef.co/go/tools v0.6.1
 	k8s.io/publishing-bot v0.5.0
 	sigs.k8s.io/logtools v0.8.1
 )
