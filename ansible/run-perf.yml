@@ -7,7 +7,7 @@
 #
 
 - name: create vm and set up localhost
-  hosts: localhost
+  hosts: microshift-dev
   vars:
     ansible_become: no
     ansible_connection: local
@@ -28,7 +28,7 @@
       when: (prometheus_logging | bool)
 
 - name: entitle host and manage repos
-  hosts: microshift
+  hosts: microshift-dev
   become: yes
   vars_files:
     - vars/all.yml
