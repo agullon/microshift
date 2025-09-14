@@ -153,7 +153,7 @@ require (
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/euank/go-kmsg-parser v2.0.0+incompatible // indirect
+	github.com/euank/go-kmsg-parser v2.1.0 // indirect
 	github.com/exponent-io/jsonpath v0.0.0-20210407135951-1de76d718b3f // indirect
 	github.com/fatih/camelcase v1.0.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect

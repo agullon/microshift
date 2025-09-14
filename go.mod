@@ -79,7 +79,7 @@ require (
 	github.com/cyphar/filepath-securejoin v0.4.1 // indirect
 	github.com/distribution/reference v0.6.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
-	github.com/euank/go-kmsg-parser v2.0.0+incompatible // indirect
+	github.com/euank/go-kmsg-parser v2.1.0 // indirect
 	github.com/exponent-io/jsonpath v0.0.0-20210407135951-1de76d718b3f // indirect
 	github.com/fatih/camelcase v1.0.0 // indirect
 	github.com/felixge/fgprof v0.9.4 // indirect
