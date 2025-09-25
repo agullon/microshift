@@ -33,7 +33,7 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.25.1 // indirect
 	github.com/mxk/go-flowrate v0.0.0-20140419014527-cca7078d478f // indirect
-	github.com/oklog/run v1.1.0 // indirect
+	github.com/oklog/run v1.2.0 // indirect
 	github.com/openshift/library-go v0.0.0-20250711143941-47604345e7ea // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/squat/generic-device-plugin v0.0.0-20250710162141-0f7fddf166f1 // indirect
