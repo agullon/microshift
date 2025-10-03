@@ -90,7 +90,7 @@ func genV1ResourcesProperties(r *cgroups.Resources, cm *dbusConnManager) ([]syst
 			newProp("CPUShares", r.CpuShares))
 	}
 
-	addCpuQuota(cm, &properties, r.CpuQuota, r.CpuPeriod)
+	addCPUQuota(cm, &properties, &r.CpuQuota, r.CpuPeriod)
 
 	if r.BlkioWeight != 0 {
 		properties = append(properties,
@@ -215,6 +215,25 @@ func (m *LegacyManager) Apply(pid int) error {
 	return nil
 }
 
+// AddPid adds a process with a given pid to an existing cgroup.
+// The subcgroup argument is either empty, or a path relative to
+// a cgroup under under the manager's cgroup.
+func (m *LegacyManager) AddPid(subcgroup string, pid int) error {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	if err := addPid(m.dbus, getUnitName(m.cgroups), subcgroup, pid); err != nil {
+		return err
+	}
+
+	// Since systemd only joins controllers it knows, use cgroupfs for the rest.
+	fsMgr, err := fs.NewManager(m.cgroups, m.paths)
+	if err != nil {
+		return err
+	}
+	return fsMgr.AddPid(subcgroup, pid)
+}
+
 func (m *LegacyManager) Destroy() error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
@@ -334,6 +353,9 @@ func (m *LegacyManager) Set(r *cgroups.Resources) error {
 	if r.Unified != nil {
 		return cgroups.ErrV1NoUnified
 	}
+	// Use a copy since CpuQuota in r may be modified.
+	rCopy := *r
+	r = &rCopy
 	properties, err := genV1ResourcesProperties(r, m.dbus)
 	if err != nil {
 		return err
