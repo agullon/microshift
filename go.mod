@@ -13,7 +13,7 @@ require (
 	github.com/openshift/library-go v0.0.0-20250711143941-47604345e7ea
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/spf13/cobra v1.9.1
-	github.com/spf13/pflag v1.0.7
+	github.com/spf13/pflag v1.0.10
 	github.com/stretchr/testify v1.10.0
 	github.com/vishvananda/netlink v1.3.1-0.20250206174618-62fb240731fa
 	go.etcd.io/etcd/client/pkg/v3 v3.5.21
