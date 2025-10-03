@@ -125,7 +125,7 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.1 // indirect
 	github.com/opencontainers/runc v1.2.5 // indirect
-	github.com/opencontainers/runtime-spec v1.2.0 // indirect
+	github.com/opencontainers/runtime-spec v1.2.1 // indirect
 	github.com/opencontainers/selinux v1.11.1 // indirect
 	github.com/openshift/apiserver-library-go v0.0.0-20250911093722-c3074dc10090 // indirect
 	github.com/peterbourgon/diskv v2.0.1+incompatible // indirect
