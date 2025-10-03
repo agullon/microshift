@@ -16,7 +16,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/openshift/api v0.0.0-20250710004639-926605d3338b
 	github.com/spf13/cobra v1.8.1
-	github.com/spf13/pflag v1.0.5
+	github.com/spf13/pflag v1.0.10
 	github.com/stretchr/testify v1.10.0
 	go.etcd.io/etcd/client/pkg/v3 v3.5.21
 	go.etcd.io/etcd/client/v3 v3.5.21
