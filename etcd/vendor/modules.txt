@@ -215,6 +215,7 @@ github.com/openshift/microshift/pkg/config
 github.com/openshift/microshift/pkg/config/apiserver
 github.com/openshift/microshift/pkg/util
 github.com/openshift/microshift/pkg/util/cryptomaterial
+github.com/openshift/microshift/pkg/version
 # github.com/peterbourgon/diskv v2.0.1+incompatible
 ## explicit
 github.com/peterbourgon/diskv
@@ -268,7 +269,7 @@ github.com/tmc/grpc-websocket-proxy/wsproxy
 ## explicit; go 1.12
 github.com/vishvananda/netlink
 github.com/vishvananda/netlink/nl
-# github.com/vishvananda/netns v0.0.4
+# github.com/vishvananda/netns v0.0.5
 ## explicit; go 1.17
 github.com/vishvananda/netns
 # github.com/x448/float16 v0.8.4
