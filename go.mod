@@ -25,7 +25,7 @@ require (
 )
 
 require (
-	github.com/coreos/go-systemd/v22 v22.5.0
+	github.com/coreos/go-systemd/v22 v22.6.0
 	github.com/evanphx/json-patch v4.12.0+incompatible
 	github.com/fsnotify/fsnotify v1.8.0
 	github.com/go-kit/kit v0.9.0
