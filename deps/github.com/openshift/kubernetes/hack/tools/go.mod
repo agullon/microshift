@@ -5,7 +5,7 @@ go 1.24.0
 godebug default=go1.24
 
 require (
-	github.com/aojea/sloppy-netparser v0.0.0-20210819225411-1b3bd8b3b975
+	github.com/aojea/sloppy-netparser v0.0.0-20210819230639-a7bbdb117ea5
 	github.com/cespare/prettybench v0.0.0-20150116022406-03b8cfe5406c
 	github.com/golangci/misspell v0.6.0
 	github.com/jcchavezs/porto v0.6.0
