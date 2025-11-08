@@ -12,7 +12,7 @@ require (
 	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/emicklei/go-restful/v3 v3.12.2
 	github.com/fsnotify/fsnotify v1.9.0
-	github.com/go-logr/logr v1.4.2
+	github.com/go-logr/logr v1.4.3
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/btree v1.1.3
 	github.com/google/cel-go v0.26.0
