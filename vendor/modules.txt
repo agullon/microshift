@@ -796,7 +796,7 @@ github.com/spf13/pflag
 ## explicit; go 1.24.0
 github.com/squat/generic-device-plugin/absolute
 github.com/squat/generic-device-plugin/deviceplugin
-# github.com/stoewer/go-strcase v1.3.0
+# github.com/stoewer/go-strcase v1.3.1
 ## explicit; go 1.11
 github.com/stoewer/go-strcase
 # github.com/stretchr/testify v1.11.1
