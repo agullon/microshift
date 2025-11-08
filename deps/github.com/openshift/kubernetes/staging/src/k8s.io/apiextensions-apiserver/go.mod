@@ -93,7 +93,7 @@ require (
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20220101234140-673ab2c3ae75 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xiang90/probing v0.0.0-20221125231312-a49e3df8f510 // indirect
-	go.etcd.io/bbolt v1.4.2 // indirect
+	go.etcd.io/bbolt v1.4.3 // indirect
 	go.etcd.io/etcd/api/v3 v3.6.4 // indirect
 	go.etcd.io/etcd/pkg/v3 v3.6.4 // indirect
 	go.etcd.io/etcd/server/v3 v3.6.4 // indirect
