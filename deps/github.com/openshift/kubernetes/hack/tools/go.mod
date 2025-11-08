@@ -9,7 +9,7 @@ require (
 	github.com/cespare/prettybench v0.0.0-20150116022406-03b8cfe5406c
 	github.com/golangci/misspell v0.6.0
 	github.com/jcchavezs/porto v0.6.0
-	github.com/vektra/mockery/v2 v2.53.3
+	github.com/vektra/mockery/v2 v2.53.5
 	go.uber.org/automaxprocs v1.6.0
 	golang.org/x/mod v0.24.0
 	golang.org/x/tools v0.32.0
