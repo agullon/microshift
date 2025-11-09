@@ -15,7 +15,7 @@ require (
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/pflag v1.0.6
 	github.com/stretchr/testify v1.10.0
-	go.yaml.in/yaml/v2 v2.4.2
+	go.yaml.in/yaml/v2 v2.4.3
 	golang.org/x/sync v0.17.0
 	golang.org/x/text v0.29.0
 	gopkg.in/evanphx/json-patch.v4 v4.12.0
