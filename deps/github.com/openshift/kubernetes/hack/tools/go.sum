@@ -4,8 +4,8 @@ github.com/aojea/sloppy-netparser v0.0.0-20210819225411-1b3bd8b3b975 h1:3bpBhtHN
 github.com/aojea/sloppy-netparser v0.0.0-20210819225411-1b3bd8b3b975/go.mod h1:VP81Qd6FKAazakPswOou8ULXGU/j5QH0VcGPzehHx3s=
 github.com/bitfield/gotestdox v0.2.2 h1:x6RcPAbBbErKLnapz1QeAlf3ospg8efBsedU93CDsnE=
 github.com/bitfield/gotestdox v0.2.2/go.mod h1:D+gwtS0urjBrzguAkTM2wodsTQYFHdpx8eqRJ3N+9pY=
-github.com/cespare/prettybench v0.0.0-20150116022406-03b8cfe5406c h1:p8i+qCbr/dNhS2FoQhRpSS7X5+IlxTa94nRNYXu4fyo=
-github.com/cespare/prettybench v0.0.0-20150116022406-03b8cfe5406c/go.mod h1:Xe6ZsFhtM8HrDku0pxJ3/Lr51rwykrzgFwpmTzleatY=
+github.com/cespare/prettybench v0.1.0 h1:6H/vgT6ZVysiOSYZXd0Cl3bD7U3XtVbmZycfsCFnHgk=
+github.com/cespare/prettybench v0.1.0/go.mod h1:ZXdFCkgnnk2/4dXGxEzvTuKF2uKsVvNriRCyMRmYJQc=
 github.com/chigopher/pathlib v0.19.1 h1:RoLlUJc0CqBGwq239cilyhxPNLXTK+HXoASGyGznx5A=
 github.com/chigopher/pathlib v0.19.1/go.mod h1:tzC1dZLW8o33UQpWkNkhvPwL5n4yyFRFm/jL1YGWFvY=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
