@@ -792,7 +792,7 @@ github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.10
 ## explicit; go 1.12
 github.com/spf13/pflag
-# github.com/squat/generic-device-plugin v0.0.0-20251019101956-043a51e18f31
+# github.com/squat/generic-device-plugin v0.0.0-20251110101604-d478d79f7fda
 ## explicit; go 1.24.0
 github.com/squat/generic-device-plugin/absolute
 github.com/squat/generic-device-plugin/deviceplugin

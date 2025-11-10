@@ -216,8 +216,8 @@ github.com/spf13/cobra v1.9.1/go.mod h1:nDyEzZ8ogv936Cinf6g1RU9MRY64Ir93oCnqb9wx
 github.com/spf13/pflag v1.0.6/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
 github.com/spf13/pflag v1.0.10 h1:4EBh2KAYBwaONj6b2Ye1GiHfwjqyROoF4RwYO+vPwFk=
 github.com/spf13/pflag v1.0.10/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
-github.com/squat/generic-device-plugin v0.0.0-20251019101956-043a51e18f31 h1:wPJNupO/W9VJkwf/5vVnEReuS3pf5u+V+RGv6TOPrLM=
-github.com/squat/generic-device-plugin v0.0.0-20251019101956-043a51e18f31/go.mod h1:9pAOQhVkVgGnpJcHSumKIQXSp8ALx3TeYoGUih9BNwY=
+github.com/squat/generic-device-plugin v0.0.0-20251110101604-d478d79f7fda h1:e/3EyeQ+g4dKEvhRxRSLNAGXTcrCLOMYPUmbt5BZk7k=
+github.com/squat/generic-device-plugin v0.0.0-20251110101604-d478d79f7fda/go.mod h1:9pAOQhVkVgGnpJcHSumKIQXSp8ALx3TeYoGUih9BNwY=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.5.2 h1:xuMeJ0Sdp5ZMRXx/aWO6RZxdr3beISkG5/G/aIRr3pY=
