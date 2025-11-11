@@ -56,8 +56,8 @@ github.com/chai2010/gettext-go
 github.com/chai2010/gettext-go/mo
 github.com/chai2010/gettext-go/plural
 github.com/chai2010/gettext-go/po
-# github.com/container-storage-interface/spec v1.9.0
-## explicit; go 1.18
+# github.com/container-storage-interface/spec v1.12.0
+## explicit; go 1.23.0
 github.com/container-storage-interface/spec/lib/go/csi
 # github.com/containerd/containerd/api v1.8.0
 ## explicit; go 1.21
@@ -188,9 +188,7 @@ github.com/gogo/protobuf/sortkeys
 # github.com/golang/protobuf v1.5.4
 ## explicit; go 1.17
 github.com/golang/protobuf/proto
-github.com/golang/protobuf/protoc-gen-go/descriptor
 github.com/golang/protobuf/ptypes/timestamp
-github.com/golang/protobuf/ptypes/wrappers
 # github.com/golang/snappy v0.0.4
 ## explicit
 github.com/golang/snappy
