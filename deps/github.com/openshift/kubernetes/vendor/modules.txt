@@ -3,7 +3,9 @@
 ## explicit; go 1.17
 bitbucket.org/bertimus9/systemstat
 # cel.dev/expr v0.24.0
-## explicit; go 1.22.0
+## explicit; go 1.23.0
+# cel.dev/expr v0.25.1
+## explicit; go 1.23.0
 cel.dev/expr
 # github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161
 ## explicit; go 1.16
@@ -617,15 +619,9 @@ github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1/fake
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2/fake
-github.com/openshift/client-go/config/informers/externalversions
-github.com/openshift/client-go/config/informers/externalversions/config
 github.com/openshift/client-go/config/informers/externalversions/config/v1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha2
 github.com/openshift/client-go/config/informers/externalversions/internalinterfaces
 github.com/openshift/client-go/config/listers/config/v1
-github.com/openshift/client-go/config/listers/config/v1alpha1
-github.com/openshift/client-go/config/listers/config/v1alpha2
 github.com/openshift/client-go/image/applyconfigurations/image/v1
 github.com/openshift/client-go/image/applyconfigurations/internal
 github.com/openshift/client-go/image/clientset/versioned
@@ -1253,7 +1249,9 @@ google.golang.org/grpc/stats
 google.golang.org/grpc/status
 google.golang.org/grpc/tap
 # google.golang.org/protobuf v1.36.5
-## explicit; go 1.21
+## explicit; go 1.23
+# google.golang.org/protobuf v1.36.10
+## explicit; go 1.23
 google.golang.org/protobuf/encoding/protodelim
 google.golang.org/protobuf/encoding/protojson
 google.golang.org/protobuf/encoding/prototext
