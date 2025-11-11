@@ -25,7 +25,7 @@ require (
 	go.yaml.in/yaml/v2 v2.4.2
 	golang.org/x/sync v0.17.0
 	google.golang.org/grpc v1.72.1
-	google.golang.org/protobuf v1.36.5
+	google.golang.org/protobuf v1.36.10
 	gopkg.in/evanphx/json-patch.v4 v4.12.0
 	k8s.io/api v0.34.1
 	k8s.io/apimachinery v0.34.1
@@ -43,7 +43,7 @@ require (
 )
 
 require (
-	cel.dev/expr v0.24.0 // indirect
+	cel.dev/expr v0.25.1 // indirect
 	github.com/NYTimes/gziphandler v1.1.1 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
