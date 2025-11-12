@@ -2225,7 +2225,7 @@ k8s.io/kubelet/pkg/cri/streaming
 k8s.io/kubelet/pkg/cri/streaming/portforward
 k8s.io/kubelet/pkg/cri/streaming/remotecommand
 k8s.io/kubelet/pkg/types
-# k8s.io/kubernetes v1.34.1 => ./deps/github.com/openshift/kubernetes
+# k8s.io/kubernetes v1.34.2 => ./deps/github.com/openshift/kubernetes
 ## explicit; go 1.24.0
 k8s.io/kubernetes/cmd/kube-apiserver/app
 k8s.io/kubernetes/cmd/kube-apiserver/app/options
