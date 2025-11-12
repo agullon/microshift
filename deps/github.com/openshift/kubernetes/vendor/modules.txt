@@ -617,15 +617,9 @@ github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1/fake
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2/fake
-github.com/openshift/client-go/config/informers/externalversions
-github.com/openshift/client-go/config/informers/externalversions/config
 github.com/openshift/client-go/config/informers/externalversions/config/v1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha2
 github.com/openshift/client-go/config/informers/externalversions/internalinterfaces
 github.com/openshift/client-go/config/listers/config/v1
-github.com/openshift/client-go/config/listers/config/v1alpha1
-github.com/openshift/client-go/config/listers/config/v1alpha2
 github.com/openshift/client-go/image/applyconfigurations/image/v1
 github.com/openshift/client-go/image/applyconfigurations/internal
 github.com/openshift/client-go/image/clientset/versioned
@@ -785,7 +779,7 @@ github.com/prometheus/procfs/internal/util
 ## explicit; go 1.12
 github.com/robfig/cron/v3
 # github.com/rogpeppe/go-internal v1.13.1
-## explicit; go 1.22
+## explicit; go 1.23
 # github.com/russross/blackfriday/v2 v2.1.0
 ## explicit
 github.com/russross/blackfriday/v2
@@ -850,7 +844,9 @@ go.etcd.io/etcd/api/v3/v3rpc/rpctypes
 go.etcd.io/etcd/api/v3/version
 go.etcd.io/etcd/api/v3/versionpb
 # go.etcd.io/etcd/client/pkg/v3 v3.6.4
-## explicit; go 1.23.0
+## explicit; go 1.24
+# go.etcd.io/etcd/client/pkg/v3 v3.6.6
+## explicit; go 1.24
 go.etcd.io/etcd/client/pkg/v3/fileutil
 go.etcd.io/etcd/client/pkg/v3/logutil
 go.etcd.io/etcd/client/pkg/v3/pathutil
