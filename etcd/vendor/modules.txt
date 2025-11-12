@@ -287,7 +287,7 @@ go.etcd.io/bbolt
 go.etcd.io/bbolt/errors
 go.etcd.io/bbolt/internal/common
 go.etcd.io/bbolt/internal/freelist
-# go.etcd.io/etcd/api/v3 v3.6.4 => github.com/openshift/etcd/api/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
+# go.etcd.io/etcd/api/v3 v3.6.6 => github.com/openshift/etcd/api/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
 ## explicit; go 1.23.0
 go.etcd.io/etcd/api/v3/authpb
 go.etcd.io/etcd/api/v3/etcdserverpb
@@ -296,7 +296,7 @@ go.etcd.io/etcd/api/v3/membershippb
 go.etcd.io/etcd/api/v3/mvccpb
 go.etcd.io/etcd/api/v3/v3rpc/rpctypes
 go.etcd.io/etcd/api/v3/version
-# go.etcd.io/etcd/client/pkg/v3 v3.6.4 => github.com/openshift/etcd/client/pkg/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
+# go.etcd.io/etcd/client/pkg/v3 v3.6.6 => github.com/openshift/etcd/client/pkg/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
 ## explicit; go 1.23.0
 go.etcd.io/etcd/client/pkg/v3/fileutil
 go.etcd.io/etcd/client/pkg/v3/logutil
@@ -309,7 +309,7 @@ go.etcd.io/etcd/client/pkg/v3/types
 # go.etcd.io/etcd/client/v2 v2.305.21
 ## explicit; go 1.23.0
 go.etcd.io/etcd/client/v2
-# go.etcd.io/etcd/client/v3 v3.6.4 => github.com/openshift/etcd/client/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
+# go.etcd.io/etcd/client/v3 v3.6.6 => github.com/openshift/etcd/client/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
 ## explicit; go 1.23.0
 go.etcd.io/etcd/client/v3
 go.etcd.io/etcd/client/v3/concurrency
