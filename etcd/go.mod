@@ -14,7 +14,7 @@ require (
 	github.com/openshift/api v0.0.0-20251015095338-264e80a2b6e7
 	github.com/openshift/build-machinery-go v0.0.0-20250602125535-1b6d00b8c37c
 	github.com/spf13/cobra v1.9.1
-	go.etcd.io/etcd/server/v3 v3.6.4
+	go.etcd.io/etcd/server/v3 v3.6.6
 	k8s.io/apimachinery v1.34.1
 	k8s.io/cli-runtime v1.34.1
 	k8s.io/component-base v1.34.1
@@ -110,12 +110,12 @@ require (
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20220101234140-673ab2c3ae75 // indirect
 	github.com/xiang90/probing v0.0.0-20221125231312-a49e3df8f510 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
-	go.etcd.io/bbolt v1.4.2 // indirect
-	go.etcd.io/etcd/api/v3 v3.6.4
-	go.etcd.io/etcd/client/pkg/v3 v3.6.4 // indirect
+	go.etcd.io/bbolt v1.4.3 // indirect
+	go.etcd.io/etcd/api/v3 v3.6.6
+	go.etcd.io/etcd/client/pkg/v3 v3.6.6 // indirect
 	go.etcd.io/etcd/client/v2 v2.305.21 // indirect
-	go.etcd.io/etcd/client/v3 v3.6.4 // indirect
-	go.etcd.io/etcd/pkg/v3 v3.6.4 // indirect
+	go.etcd.io/etcd/client/v3 v3.6.6 // indirect
+	go.etcd.io/etcd/pkg/v3 v3.6.6 // indirect
 	go.etcd.io/etcd/raft/v3 v3.5.21 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.60.0 // indirect
 	go.opentelemetry.io/otel v1.37.0 // indirect
