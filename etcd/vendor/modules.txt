@@ -287,7 +287,7 @@ go.etcd.io/bbolt
 go.etcd.io/bbolt/errors
 go.etcd.io/bbolt/internal/common
 go.etcd.io/bbolt/internal/freelist
-# go.etcd.io/etcd/api/v3 v3.6.4 => github.com/openshift/etcd/api/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
+# go.etcd.io/etcd/api/v3 v3.6.6 => github.com/openshift/etcd/api/v3 v3.5.1-0.20251001062325-e2b3dfdf0379
 ## explicit; go 1.23.0
 go.etcd.io/etcd/api/v3/authpb
 go.etcd.io/etcd/api/v3/etcdserverpb
