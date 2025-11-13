@@ -93,37 +93,37 @@ require (
 	gopkg.in/go-jose/go-jose.v2 v2.6.3
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gopkg.in/yaml.v2 v2.4.0
-	k8s.io/api v0.34.1
-	k8s.io/apiextensions-apiserver v0.34.1
-	k8s.io/apimachinery v0.34.1
-	k8s.io/apiserver v0.34.1
-	k8s.io/cli-runtime v0.0.0
-	k8s.io/client-go v0.34.1
-	k8s.io/cloud-provider v0.0.0
-	k8s.io/cluster-bootstrap v0.0.0
-	k8s.io/code-generator v0.34.1
-	k8s.io/component-base v0.34.1
-	k8s.io/component-helpers v0.32.1
-	k8s.io/controller-manager v0.32.1
-	k8s.io/cri-api v0.0.0
+	k8s.io/api v0.34.2
+	k8s.io/apiextensions-apiserver v0.34.2
+	k8s.io/apimachinery v0.34.2
+	k8s.io/apiserver v0.34.2
+	k8s.io/cli-runtime v0.34.2
+	k8s.io/client-go v0.34.2
+	k8s.io/cloud-provider v0.34.2
+	k8s.io/cluster-bootstrap v0.34.2
+	k8s.io/code-generator v0.34.2
+	k8s.io/component-base v0.34.2
+	k8s.io/component-helpers v0.34.2
+	k8s.io/controller-manager v0.34.2
+	k8s.io/cri-api v0.34.2
 	k8s.io/cri-client v0.0.0
-	k8s.io/csi-translation-lib v0.0.0
+	k8s.io/csi-translation-lib v0.34.2
 	k8s.io/dynamic-resource-allocation v0.0.0
 	k8s.io/endpointslice v0.0.0
 	k8s.io/externaljwt v0.0.0
 	k8s.io/klog/v2 v2.130.1
 	k8s.io/kms v0.34.1
-	k8s.io/kube-aggregator v0.34.1
-	k8s.io/kube-controller-manager v0.0.0
+	k8s.io/kube-aggregator v0.34.2
+	k8s.io/kube-controller-manager v0.34.2
 	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b
-	k8s.io/kube-proxy v0.0.0
-	k8s.io/kube-scheduler v0.0.0
-	k8s.io/kubectl v0.0.0
-	k8s.io/kubelet v0.0.0
-	k8s.io/metrics v0.0.0
-	k8s.io/mount-utils v0.0.0
-	k8s.io/pod-security-admission v0.0.0
-	k8s.io/sample-apiserver v0.0.0
+	k8s.io/kube-proxy v0.34.2
+	k8s.io/kube-scheduler v0.34.2
+	k8s.io/kubectl v0.34.2
+	k8s.io/kubelet v0.34.2
+	k8s.io/metrics v0.34.2
+	k8s.io/mount-utils v0.34.2
+	k8s.io/pod-security-admission v0.34.2
+	k8s.io/sample-apiserver v0.34.2
 	k8s.io/system-validators v1.10.1
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/knftables v0.0.17
