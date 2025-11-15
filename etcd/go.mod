@@ -29,6 +29,17 @@ require (
 	github.com/go-kit/log v0.2.1 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/go-openapi/swag/cmdutils v0.25.1 // indirect
+	github.com/go-openapi/swag/conv v0.25.1 // indirect
+	github.com/go-openapi/swag/fileutils v0.25.1 // indirect
+	github.com/go-openapi/swag/jsonname v0.25.1 // indirect
+	github.com/go-openapi/swag/jsonutils v0.25.1 // indirect
+	github.com/go-openapi/swag/loading v0.25.1 // indirect
+	github.com/go-openapi/swag/mangling v0.25.1 // indirect
+	github.com/go-openapi/swag/netutils v0.25.1 // indirect
+	github.com/go-openapi/swag/stringutils v0.25.1 // indirect
+	github.com/go-openapi/swag/typeutils v0.25.1 // indirect
+	github.com/go-openapi/swag/yamlutils v0.25.1 // indirect
 	github.com/google/gnostic-models v0.7.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3 // indirect
@@ -72,9 +83,9 @@ require (
 	github.com/exponent-io/jsonpath v0.0.0-20210407135951-1de76d718b3f // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
-	github.com/go-openapi/jsonpointer v0.21.0 // indirect
-	github.com/go-openapi/jsonreference v0.21.0 // indirect
-	github.com/go-openapi/swag v0.23.0 // indirect
+	github.com/go-openapi/jsonpointer v0.22.2 // indirect
+	github.com/go-openapi/jsonreference v0.21.3 // indirect
+	github.com/go-openapi/swag v0.25.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
@@ -87,10 +98,8 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jonboulle/clockwork v0.5.0 // indirect
-	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/liggitt/tabwriter v0.0.0-20181228230101-89fcab3d43de // indirect
-	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/moby/spdystream v0.5.0 // indirect
 	github.com/moby/term v0.5.0 // indirect
@@ -138,7 +147,6 @@ require (
 	google.golang.org/protobuf v1.36.8 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/api v1.34.1 // indirect
 	k8s.io/client-go v1.34.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b // indirect
