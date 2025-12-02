@@ -34,7 +34,7 @@ require (
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/cadvisor v0.52.1
 	github.com/google/cel-go v0.26.0
-	github.com/google/gnostic-models v0.7.0
+	github.com/google/gnostic-models v0.7.1
 	github.com/google/go-cmp v0.7.0
 	github.com/google/uuid v1.6.0
 	github.com/ishidawataru/sctp v0.0.0-20250521072954-ae8eb7fa7995
