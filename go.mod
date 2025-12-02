@@ -16,7 +16,7 @@ require (
 	github.com/spf13/pflag v1.0.10
 	github.com/stretchr/testify v1.11.1
 	github.com/vishvananda/netlink v1.3.1
-	go.etcd.io/etcd/client/pkg/v3 v3.6.4
+	go.etcd.io/etcd/client/pkg/v3 v3.6.6
 	go.etcd.io/etcd/client/v3 v3.6.4
 	golang.org/x/sys v0.36.0
 	gopkg.in/yaml.v3 v3.0.1
