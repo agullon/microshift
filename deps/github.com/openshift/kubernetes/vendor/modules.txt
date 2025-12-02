@@ -7,6 +7,8 @@ bitbucket.org/bertimus9/systemstat
 cel.dev/expr
 # github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161
 ## explicit; go 1.16
+# github.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c
+## explicit; go 1.16
 github.com/Azure/go-ansiterm
 github.com/Azure/go-ansiterm/winterm
 # github.com/Azure/go-ntlmssp v0.0.0-20221128193559-754e69321358
@@ -403,6 +405,8 @@ github.com/moby/sys/mountinfo
 github.com/moby/sys/userns
 # github.com/moby/term v0.5.0
 ## explicit; go 1.18
+# github.com/moby/term v0.5.2
+## explicit; go 1.18
 github.com/moby/term
 github.com/moby/term/windows
 # github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
@@ -617,15 +621,9 @@ github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha1/fake
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2
 github.com/openshift/client-go/config/clientset/versioned/typed/config/v1alpha2/fake
-github.com/openshift/client-go/config/informers/externalversions
-github.com/openshift/client-go/config/informers/externalversions/config
 github.com/openshift/client-go/config/informers/externalversions/config/v1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha1
-github.com/openshift/client-go/config/informers/externalversions/config/v1alpha2
 github.com/openshift/client-go/config/informers/externalversions/internalinterfaces
 github.com/openshift/client-go/config/listers/config/v1
-github.com/openshift/client-go/config/listers/config/v1alpha1
-github.com/openshift/client-go/config/listers/config/v1alpha2
 github.com/openshift/client-go/image/applyconfigurations/image/v1
 github.com/openshift/client-go/image/applyconfigurations/internal
 github.com/openshift/client-go/image/clientset/versioned
