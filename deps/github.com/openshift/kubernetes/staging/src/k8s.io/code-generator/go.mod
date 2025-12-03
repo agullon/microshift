@@ -11,7 +11,7 @@ require (
 	github.com/google/gnostic-models v0.7.0
 	github.com/google/go-cmp v0.7.0
 	github.com/spf13/pflag v1.0.6
-	go.yaml.in/yaml/v2 v2.4.2
+	go.yaml.in/yaml/v2 v2.4.3
 	golang.org/x/text v0.29.0
 	k8s.io/apimachinery v0.0.0
 	k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f
