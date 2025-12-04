@@ -75,14 +75,11 @@ get_redhat_bootc_image_url() {{
 
     # get arch
     local arch=""
-    case ${{UNAME_M}} in
-        x86_64)
-            arch="amd64"
-            ;;
-        aarch64)
-            arch="arm64"
-            ;;
-    esac
+    if [ "${{UNAME_M}}" = "x86_64" ]; then
+        arch="amd64"
+    elif [ "${{UNAME_M}}" = "aarch64" ]; then
+        arch="arm64"
+    fi
 
     sha_id=$(skopeo inspect --raw "docker://${{registry}}/openshift4/microshift-bootc-rhel9:v${{release_version}}" | \
         jq -r ".manifests[] | select(.platform.architecture==\"${{arch}}\") | .digest" 2>/dev/null)
