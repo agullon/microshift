@@ -8,11 +8,11 @@
 IMAGE_SIGSTORE_ENABLED=true
 
 scenario_create_vms() {
-    if [ -z "${LREL_RELEASE_IMAGE_URL}" ] || [[ "${LREL_RELEASE_IMAGE_URL}" == "" ]] ; then
-        echo "ERROR: Scenario requires a valid LREL_RELEASE_IMAGE_URL, but got '${LREL_RELEASE_IMAGE_URL}'"
+    if [ -z "${LATEST_RELEASE_IMAGE_URL}" ] || [[ "${LATEST_RELEASE_IMAGE_URL}" == "" ]] ; then
+        echo "ERROR: Scenario requires a valid LATEST_RELEASE_IMAGE_URL, but got '${LATEST_RELEASE_IMAGE_URL}'"
         exit 1
     fi
-    prepare_kickstart host1 kickstart-bootc.ks.template "${LREL_RELEASE_IMAGE_URL}"
+    prepare_kickstart host1 kickstart-bootc.ks.template "${LATEST_RELEASE_IMAGE_URL}"
     launch_vm --boot_blueprint rhel96-bootc
 
     # Open the firewall ports. Other scenarios get this behavior by embedding
