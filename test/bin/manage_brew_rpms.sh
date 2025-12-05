@@ -5,6 +5,8 @@ SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Note: Avoid sourcing common.sh or common_version.sh in this script to allow
 # its execution in a containerized environment with limited set of tools.
 
+UNAME_M="${UNAME_M:-$(uname -m)}"
+
 usage() {
     echo "Usage: $(basename "$0") [access | download | find_package <version> <path> [version_type] [ver_prev_y] [ver_prev_z]]"
     echo "  access:     Exit with non-zero status if brew cannot be accessed"
@@ -73,13 +75,13 @@ action_find_package() {
             package=$(echo "${package_filtered}" | tail -n$((1 + ver_prev_z)) | head -n1 | awk '{print $1}') || true
             if [ -z "${package}" ] ; then
                 package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE 2>/dev/null) || true
-                package_filtered=$(echo "${package_list}" | grep "^microshift-${ver}" | grep -v "~" | sort -V | uniq ) || true
+                package_filtered=$(echo "${package_list}" | grep "^microshift-${ver_x}.${ver_y}" | grep -v "~" | sort -V | uniq ) || true
                 package=$(echo "${package_filtered}" | tail -n1 | awk '{print $1}') || true
             fi
             ;;
         nightly)
             package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE 2>/dev/null  ) || true
-            package_filtered=$(echo "${package_list}" | grep "^microshift-${ver}" | grep "nightly" | sort -V | uniq ) || true
+            package_filtered=$(echo "${package_list}" | grep "^microshift-${ver_x}.${ver_y}" | grep "nightly" | sort -V | uniq ) || true
             package=$(echo "${package_filtered}" | tail -n1 | awk '{print $1}') || true
             ;;
         rc|ec)
