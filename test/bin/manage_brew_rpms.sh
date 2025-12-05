@@ -65,29 +65,28 @@ action_find_package() {
     # Calculate previous X.Y version
     ver_y=$((ver_y - ver_prev_y))
 
+    local package=""
     case ${ver_type} in
         zstream)
-            package_list=$(sudo dnf repoquery --quiet --repo "rhocp-${ver_x}.${ver_y}-for-rhel-9-x86_64-rpms" | grep "microshift-0:" | sed 's/0://' | sed 's/.x86_64$//') || true
-            package=$(echo "${package_list}" | sort -V | uniq | tail -n$((1 + ver_prev_z)) | head -n1 | awk '{print $1}') || true
+            package_list=$(sudo dnf repoquery --quiet --repo "rhocp-${ver_x}.${ver_y}-for-rhel-9-${UNAME_M}-rpms" 2>/dev/null) || true
+            package_filtered=$(echo "${package_list}" | grep "microshift-0:" | sed 's/0://' | sed "s/.${UNAME_M}$//" | sort -V | uniq ) || true
+            package=$(echo "${package_filtered}" | tail -n$((1 + ver_prev_z)) | head -n1 | awk '{print $1}') || true
             ;;
         nightly)
-            package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE | grep "^microshift-${ver}" | grep "nightly" ) || true
-            package=$(echo "${package_list}" | sort -V | uniq | tail -n1 | awk '{print $1}') || true
+            package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE 2>/dev/null  ) || true
+            package_filtered=$(echo "${package_list}" | grep "^microshift-${ver}" | grep "nightly" | sort -V | uniq ) || true
+            package=$(echo "${package_filtered}" | tail -n1 | awk '{print $1}') || true
             ;;
         rc|ec)
-            package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE | grep "^microshift-${ver_x}.${ver_y}.0~${ver_type}.") || true
-            package=$(echo "${package_list}" | sort -V | uniq | tail -n1 | awk '{print $1}') || true
+            package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE 2>/dev/null ) || true
+            package_filtered=$(echo "${package_list}" | grep "^microshift-${ver_x}.${ver_y}.0~${ver_type}." | sort -V | uniq ) || true
+            package=$(echo "${package_filtered}" | tail -n1 | awk '{print $1}') || true
             ;;
         *)
             echo "ERROR: Invalid version_type '${ver_type}'. Valid values are: rc, ec, zstream and nightly"
             exit 1
             ;;
     esac
-
-    if [ -z "${package}" ] ; then
-        echo "ERROR: Cannot find MicroShift '${ver_x}.${ver_y}' packages"
-        return 1
-    fi
 
     echo "${package}"
 }
