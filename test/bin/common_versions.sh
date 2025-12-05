@@ -148,14 +148,17 @@ Y0_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION
 Y1_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION}" "zstream" "1" "0" | cut -d'-' -f2)"
 Y2_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION}" "zstream" "2" "0" | cut -d'-' -f2)"
 Z1_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION}" "zstream" "0" "1" | cut -d'-' -f2)"
+RC_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION}" "rc" "0" "0" | cut -d'-' -f2)"
+EC_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION}" "ec" "0" "0" | cut -d'-' -f2)"
+NIGHTLY_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${MINOR_VERSION}" "nightly" "0" "0" | cut -d'-' -f2)"
 
 BREW_Y0_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${Y0_VERSION}/${UNAME_M}/")"
 BREW_Y1_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${Y1_VERSION}/${UNAME_M}/")"
 BREW_Y2_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${Y2_VERSION}/${UNAME_M}/")"
 BREW_Z1_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${Z1_VERSION}/${UNAME_M}/")"
-BREW_RC_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/4.${MINOR_VERSION}-rc/${UNAME_M}/")"
-BREW_EC_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/4.${MINOR_VERSION}-ec/${UNAME_M}/")"
-BREW_NIGHTLY_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/4.${MINOR_VERSION}-nightly/${UNAME_M}/")"
+BREW_RC_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${RC_VERSION}/${UNAME_M}/")"
+BREW_EC_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${EC_VERSION}/${UNAME_M}/")"
+BREW_NIGHTLY_RELEASE_VERSION="$(get_vrel_from_rpm "${BREW_RPM_SOURCE}/${NIGHTLY_VERSION}/${UNAME_M}/")"
 
 export BREW_Y0_RELEASE_VERSION
 export BREW_Y1_RELEASE_VERSION
