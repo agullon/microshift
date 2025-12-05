@@ -232,8 +232,15 @@ replace_using_component_commit() {
         # edit and tidy commands, allow errors. A final tidy runs without -e to ensure all dependencies
         # are ok.
         go mod tidy -e
-        pseudoversion=$(grep_pseudoversion "$(get_replace_directive "$(pwd)/go.mod" "${modulepath}")")
-        pseudoversions["${component}"]="${pseudoversion}"
+
+        if [[ "${modulepath}" =~ ^go.etcd.io/etcd/ ]]; then
+            # For some reason, pseudo-version created for one etcd package might not be working with another, despite being in the same repository.
+            # So for etcd, don't cache the pseudo-version.
+            :
+        else
+            pseudoversion=$(grep_pseudoversion "$(get_replace_directive "$(pwd)/go.mod" "${modulepath}")")
+            pseudoversions["${component}"]="${pseudoversion}"
+        fi
     fi
 }
 
@@ -450,6 +457,7 @@ update_go_mod() {
     require_using_component_commit github.com/openshift/route-controller-manager route-controller-manager
     require_using_component_commit github.com/openshift/cluster-policy-controller cluster-policy-controller
 
+    make update-gofmt
     if grep -q "^patch-deps:" ./Makefile; then
         # etcd/ does not need to patch the dependencies
         make patch-deps
@@ -519,6 +527,10 @@ handle_deps() {
         ;;
     esac
 
+    # Following file is always generating a diff because it has CRLF line endings, but `git add` updates it to LF and the diff is gone.
+    # Remove the problematic file once for all.
+    rm -f deps/github.com/openshift/kubernetes/vendor/github.com/MakeNowJust/heredoc/README.md || true
+
     go mod tidy -e
 }
 
@@ -549,20 +561,6 @@ update_go_mods() {
     # Remove the toolchain to avoid downloading a different golang version when building with
     # ART images.
     go mod edit -toolchain=none "${REPOROOT}/etcd/go.mod"
- }
-
- update_deps_fmt() {
-    # The verify-gofmt targets belong to build-machinery-go makefiles and we can not override
-    # the files that are checked. `vendor` is automatically excluded from checks, but deps is
-    # something that only exists in MicroShift and we can not override it. Running gofmt over
-    # this directory will ensure the verify target works while still not changing functionality.
-    title "Ensuring gofmt"
-    make update-gofmt
-    if [[ -n "$(git status -s deps)" ]]; then
-        title "## Commiting gofmt changes to deps directory"
-        git add deps
-        git commit -m "update deps gofmt"
-    fi
  }
 
 # Regenerates OpenAPIs after patching the vendor directory
@@ -625,6 +623,14 @@ update_images() {
         sed -i "s|pause_image =.*|pause_image = \"${pause_image_digest}\"|g" \
             "${REPOROOT}/packaging/crio.conf.d/10-microshift_${goarch}.conf"
     done
+
+    # Lock OVN-K refs until https://issues.redhat.com/browse/OCPBUGS-65584 is resolved.
+    yq -i \
+        '.images."ovn-kubernetes-microshift" = "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:ad19c1f0010ebcda83c0f0e9f0b2618f0ccd4353388c8ce668c036a153dc70ab"' \
+        "${REPOROOT}/assets/release/release-x86_64.json"
+    yq -i \
+        '.images."ovn-kubernetes-microshift" = "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9a9e1e2dff0b52b366036024ecaff25903baab14b03a6b9daba74f6dc9b66441"' \
+        "${REPOROOT}/assets/release/release-aarch64.json"
 
     popd >/dev/null
 
@@ -1236,24 +1242,20 @@ rebase_to() {
             title "## Committing changes to ${dirname}/go.mod"
             git add "${dirpath}/go.mod" "${dirpath}/go.sum"
             git commit -m "update ${dirname}/go.mod"
+        fi
 
-            title "## Updating deps/ directory"
-            if [[ -n "$(git status -s "${dirpath}/deps")" ]]; then
-                title "## Commiting changes to ${dirname}/deps directory"
-                git add "${dirpath}/deps"
-                git commit -m "update ${dirname}/deps"
-            fi
+        if [[ -n "$(git status -s "${dirpath}/deps")" ]]; then
+            title "## Commiting changes to ${dirname}/deps directory"
+            git add "${dirpath}/deps"
+            git commit -m "update ${dirname}/deps"
+        fi
 
-            title "## Updating ${dirname}/vendor directory"
-            pushd "${dirpath}" && make vendor && popd || exit 1
-            if [[ -n "$(git status -s "${dirpath}/vendor")" ]]; then
-                title "## Commiting changes to ${dirname}/vendor directory"
-                git add "${dirpath}/vendor"
-                git commit -m "update ${dirname}/vendor"
-            fi
-            update_deps_fmt
-        else
-            echo "No changes in ${dirname}/go.mod."
+        title "## Updating ${dirname}/vendor directory"
+        pushd "${dirpath}" && make vendor && popd || exit 1
+        if [[ -n "$(git status -s "${dirpath}/vendor")" ]]; then
+            title "## Commiting changes to ${dirname}/vendor directory"
+            git add "${dirpath}/vendor"
+            git commit -m "update ${dirname}/vendor"
         fi
     done
 
@@ -1289,31 +1291,8 @@ rebase_to() {
         echo "No changes to buildfiles."
     fi
 
-    update_cncf_kubelet_version
-    if [[ -n "$(git status -s scripts/multinode/configure-sec.sh)" ]]; then
-        title "## Committing changes to scripts/multinode/configure-sec.sh"
-        git add scripts/multinode/configure-sec.sh
-        git commit -m "update kubernetes version in CNCF scripts"
-    else
-        echo "No changes to Kubernetes version."
-    fi
-
     title "# Removing staging directory"
     rm -rf "${STAGING_DIR}"
-}
-
-update_cncf_kubelet_version() {
-    title "Updating Kubernetes version in CNCF scripts"
-
-    source "${REPOROOT}/Makefile.kube_git.var"
-    local -r kube_hash_amd64="$(curl -L https://dl.k8s.io/release/${KUBE_GIT_VERSION}/bin/linux/amd64/kubelet.sha256 2>/dev/null)"
-    local -r kube_hash_arm64="$(curl -L https://dl.k8s.io/release/${KUBE_GIT_VERSION}/bin/linux/arm64/kubelet.sha256 2>/dev/null)"
-
-    local -r target="${REPOROOT}/scripts/multinode/configure-sec.sh"
-    sed -i "s,# version=v1\.[0-9]*\.[0-9]*;,# version=${KUBE_GIT_VERSION};,g" "${target}"
-    sed -i "s,local -r version=.*,local -r version=\"${KUBE_GIT_VERSION}\",g" "${target}"
-    sed -i "s,local -r kube_hash_amd64=.*,local -r kube_hash_amd64=\"${kube_hash_amd64}\",g" "${target}"
-    sed -i "s,local -r kube_hash_arm64=.*,local -r kube_hash_arm64=\"${kube_hash_arm64}\",g" "${target}"
 }
 
 to_just_images() {
@@ -1353,7 +1332,6 @@ usage() {
     echo "$(basename "$0") generated-apis                                   Regenerates OpenAPIs"
     echo "$(basename "$0") images                                           Rebases the component images to the downloaded release"
     echo "$(basename "$0") manifests                                        Rebases the component manifests to the downloaded release"
-    echo "$(basename "$0") cncf-kube-version                                Updates kubelet version in configure-sec.sh to match version in Makefile.kube_git.var"
     exit 1
 }
 
@@ -1384,9 +1362,6 @@ case "$command" in
     manifests)
         copy_manifests
         update_openshift_manifests
-        ;;
-    cncf-kube-version)
-        update_cncf_kubelet_version
         ;;
     *) usage;;
 esac
