@@ -51,12 +51,8 @@ action_find_package() {
     fi
 
     # Validate optional numeric parameters
-    if [ "${ver_prev_y}" -gt 0 ] && ! [[ "${ver_prev_y}" =~ ^[0-9]$ ]]; then
-        echo "ERROR: ver_prev_y '${ver_prev_y}' must be a non-negative integer and less than 10"
-        return 1
-    fi
-    if [ "${ver_prev_z}" -gt 0 ] && ! [[ "${ver_prev_z}" =~ ^[0-9]$ ]]; then
-        echo "ERROR: ver_prev_z '${ver_prev_z}' must be a non-negative integer and less than 10"
+    if ! [[ "${ver_prev_y}" =~ ^[0-9]$ ]] || ! [[ "${ver_prev_z}" =~ ^[0-9]$ ]]; then
+        echo "ERROR: ver_prev_y '${ver_prev_y}' and ver_prev_z '${ver_prev_z}' must be a non-negative integer and less than 10"
         return 1
     fi
 
@@ -72,12 +68,11 @@ action_find_package() {
         zstream)
             package_list=$(sudo dnf repoquery --quiet --repo "rhocp-${ver_x}.${ver_y}-for-rhel-9-${UNAME_M}-rpms" 2>/dev/null) || true
             package_filtered=$(echo "${package_list}" | grep "microshift-0:" | sed 's/0://' | sed "s/.${UNAME_M}$//" | sort -V | uniq ) || true
-            package=$(echo "${package_filtered}" | tail -n$((1 + ver_prev_z)) | head -n1 | awk '{print $1}') || true
             if [ -z "${package}" ] ; then
                 package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE 2>/dev/null) || true
                 package_filtered=$(echo "${package_list}" | grep "^microshift-${ver_x}.${ver_y}" | grep -v "~" | sort -V | uniq ) || true
-                package=$(echo "${package_filtered}" | tail -n1 | awk '{print $1}') || true
             fi
+            package=$(echo "${package_filtered}" | tail -n$((1 + ver_prev_z)) | head -n1 | awk '{print $1}') || true
             ;;
         nightly)
             package_list=$(brew list-builds --quiet --package=microshift --state=COMPLETE 2>/dev/null  ) || true
