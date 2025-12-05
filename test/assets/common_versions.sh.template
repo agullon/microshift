@@ -144,10 +144,10 @@ export CNCF_SYSTEMD_LOGS_VERSION={CNCF_SYSTEMD_LOGS_VERSION}
 export GITOPS_VERSION={GITOPS_VERSION}
 
 # The brew release versions needed for release regression testing
-Y0_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "0" "0" | cut -d'-' -f2)"
-Y1_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "1" "0" | cut -d'-' -f2)"
-Y2_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "2" "0" | cut -d'-' -f2)"
-Z1_VERSION="$("${SCRIPTDIR}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "0" "1" | cut -d'-' -f2)"
+Y0_VERSION="$("${{SCRIPTDIR}}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "0" "0" | cut -d'-' -f2)"
+Y1_VERSION="$("${{SCRIPTDIR}}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "1" "0" | cut -d'-' -f2)"
+Y2_VERSION="$("${{SCRIPTDIR}}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "2" "0" | cut -d'-' -f2)"
+Z1_VERSION="$("${{SCRIPTDIR}}/manage_brew_rpms.sh" find_package "4.${{MINOR_VERSION}}" "zstream" "0" "1" | cut -d'-' -f2)"
 
 BREW_Y0_RELEASE_VERSION="$(get_vrel_from_rpm "${{BREW_RPM_SOURCE}}/${{Y0_VERSION}}/{ARCH}/")"
 BREW_Y1_RELEASE_VERSION="$(get_vrel_from_rpm "${{BREW_RPM_SOURCE}}/${{Y1_VERSION}}/{ARCH}/")"
