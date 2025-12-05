@@ -92,16 +92,22 @@ action_find_package() {
 }
 
 action_download() {
+    local -r ver=$1
+    local -r main_dir=$2
+    local -r ver_type=$3
+    local -r ver_prev_y=$4
+    local -r ver_prev_z=$5
+
     local package
-    if ! package=$(action_find_package "$1" "$3" "$4" "$5" 2>&1); then
-        echo "${package}"
+    package="$(action_find_package "${ver}" "${ver_type}" "${ver_prev_y}" "${ver_prev_z}")"
+    if [ -z "${package}" ] ; then
+        echo "ERROR: Package not found: ${ver} ${ver_type} ${ver_prev_y} ${ver_prev_z}"
         return 1
     fi
 
-    local -r main_dir="${2}"
     local -r sub_dir=$(echo "${package}" | cut -d'-' -f2)
-    local -r ver_type="${3}"
-    if ! brew_cli_download "${package}" "${main_dir}" "${sub_dir}" "${ver_type}" 2>&1; then
+    if ! brew_cli_download "${package}" "${main_dir}" "${sub_dir}" "${ver_type}" ; then
+        echo "ERROR: Failed to download package: ${package}"
         return 1
     fi
 }
