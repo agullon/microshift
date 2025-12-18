@@ -26,7 +26,7 @@ require (
 	github.com/openshift/library-go v0.0.0-20251015151611-6fc7a74b67c5
 	github.com/spf13/pflag v1.0.6
 	github.com/stretchr/testify v1.10.0
-	go.etcd.io/etcd/api/v3 v3.6.4
+	go.etcd.io/etcd/api/v3 v3.6.7
 	go.etcd.io/etcd/client/pkg/v3 v3.6.4
 	go.etcd.io/etcd/client/v3 v3.6.4
 	go.etcd.io/etcd/server/v3 v3.6.4
@@ -40,7 +40,7 @@ require (
 	go.uber.org/atomic v1.11.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/crypto v0.42.0
-	golang.org/x/net v0.43.0
+	golang.org/x/net v0.45.0
 	golang.org/x/sync v0.17.0
 	golang.org/x/sys v0.36.0
 	golang.org/x/time v0.9.0
