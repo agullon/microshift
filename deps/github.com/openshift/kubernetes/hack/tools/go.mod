@@ -22,7 +22,7 @@ require (
 )
 
 require (
-	github.com/BurntSushi/toml v1.5.0 // indirect
+	github.com/BurntSushi/toml v1.6.0 // indirect
 	github.com/bitfield/gotestdox v0.2.2 // indirect
 	github.com/chigopher/pathlib v0.19.1 // indirect
 	github.com/dnephin/pflag v1.0.7 // indirect
