@@ -20,7 +20,7 @@ require (
 	go.etcd.io/etcd/client/v3 v3.6.4
 	golang.org/x/sys v0.36.0
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b
+	k8s.io/kube-openapi v0.0.0-20251125145642-4e65d59e963e
 	sigs.k8s.io/yaml v1.6.0
 )
 
