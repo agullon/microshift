@@ -10,7 +10,7 @@ require (
 	github.com/emicklei/go-restful/v3 v3.12.2
 	github.com/fxamacker/cbor/v2 v2.9.0
 	github.com/gogo/protobuf v1.3.2
-	github.com/google/cel-go v0.26.0
+	github.com/google/cel-go v0.26.1
 	github.com/google/gnostic-models v0.7.0
 	github.com/google/go-cmp v0.7.0
 	github.com/google/uuid v1.6.0
