@@ -18,8 +18,11 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"io/fs"
+	"math"
+	"path/filepath"
 	"sort"
 	"strconv"
+	"strings"
 
 	"k8s.io/kubelet/pkg/apis/deviceplugin/v1beta1"
 )
@@ -51,6 +54,11 @@ type Path struct {
 	// then the group will provide 5 pairs of devices.
 	// When unspecified, Limit defaults to 1.
 	Limit uint `json:"limit,omitempty"`
+	// Optional specifies whether this device path is optional.
+	// When true, if the device path does not exist, it will be ignored instead of causing an error.
+	// This allows containers to start even when some devices are not present on the system.
+	// When unspecified, Optional defaults to false.
+	Optional bool `json:"optional,omitempty"`
 }
 
 // PathType represents the kinds of file-system nodes that can be scheduled.
@@ -69,19 +77,26 @@ func (gp *GenericPlugin) discoverPath() ([]device, error) {
 	for _, group := range gp.ds.Groups {
 		paths := make([][]string, len(group.Paths))
 		var length int
-		var limitLength int
+		limitLength := math.MaxInt
+		// Track which paths have matches (used for optional paths).
+		pathHasMatches := make([]bool, len(group.Paths))
 		// Discover all the devices matching each pattern in the Paths group.
 		for i, path := range group.Paths {
 			matches, err := fs.Glob(gp.fs, path.Path)
 			if err != nil {
 				return nil, err
 			}
+			// If no matches found and path is optional, skip it.
+			if len(matches) == 0 && path.Optional {
+				continue
+			}
+			pathHasMatches[i] = true
 			sort.Strings(matches)
 			for j := uint(0); j < path.Limit; j++ {
 				paths[i] = append(paths[i], matches...)
 			}
 			// Keep track of the shortest reusable length in the group.
-			if i == 0 || len(paths[i]) < limitLength {
+			if len(paths[i]) < limitLength {
 				limitLength = len(paths[i])
 			}
 			// Keep track of the greatest natural length in the group.
@@ -103,9 +118,16 @@ func (gp *GenericPlugin) discoverPath() ([]device, error) {
 					},
 				}
 				for k, path := range group.Paths {
+					// Skip paths that had no matches (optional and missing).
+					if !pathHasMatches[k] {
+						continue
+					}
 					mountPath = path.MountPath
 					if mountPath == "" {
 						mountPath = paths[k][i]
+					}
+					if strings.HasSuffix(mountPath, "/") {
+						mountPath = mountPath + filepath.Base(paths[k][i])
 					}
 					switch path.Type {
 					case DevicePathType:
