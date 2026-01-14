@@ -205,7 +205,7 @@ require (
 	github.com/vishvananda/netns v0.0.5 // indirect
 	go.etcd.io/etcd/api/v3 v3.6.4 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	go.uber.org/zap v1.27.0 // indirect
+	go.uber.org/zap v1.27.1 // indirect
 	golang.org/x/mod v0.27.0 // indirect
 	golang.org/x/net v0.43.0 // indirect
 	golang.org/x/sync v0.17.0 // indirect
