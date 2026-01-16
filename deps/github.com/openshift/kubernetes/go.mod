@@ -22,7 +22,7 @@ require (
 	github.com/coredns/corefile-migration v1.0.26
 	github.com/coreos/go-oidc v2.3.0+incompatible
 	github.com/coreos/go-systemd/v22 v22.5.0
-	github.com/cpuguy83/go-md2man/v2 v2.0.6
+	github.com/cpuguy83/go-md2man/v2 v2.0.7
 	github.com/cyphar/filepath-securejoin v0.4.1
 	github.com/distribution/reference v0.6.0
 	github.com/docker/go-units v0.5.0
