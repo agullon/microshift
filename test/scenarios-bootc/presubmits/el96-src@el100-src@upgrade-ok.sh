@@ -12,10 +12,8 @@ scenario_remove_vms() {
 }
 
 scenario_run_tests() {
-    # The SYNC_FREQUENCY is set to a shorter-than-default value to speed up
-    # pre-submit scenario completion time in DNS tests.
     run_tests host1 \
-        --variable "EXPECTED_OS_VERSION:9.6" \
-        --variable "SYNC_FREQUENCY:5s" \
-        suites/standard1/
+        --variable "TARGET_REF:rhel100-bootc-source" \
+        --variable "BOOTC_REGISTRY:${MIRROR_REGISTRY_URL}" \
+        suites/upgrade/upgrade-successful.robot
 }
