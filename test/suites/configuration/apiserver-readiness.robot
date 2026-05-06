@@ -46,7 +46,7 @@ Poll For 429 During Startup
     [Documentation]    Poll the API server until we observe a 429 response or the server becomes ready.
     ...    Returns True if 429 was observed, False otherwise.
     ${found}=    Set Variable    ${FALSE}
-    FOR    ${i}    IN RANGE    120
+    FOR    ${i}    IN RANGE    300
         ${stdout}    ${stderr}    ${rc}=    Execute Command
         ...    curl -sk -o /dev/null -w "%{http_code}" -H "${READINESS_HEADER}" ${APIS_ENDPOINT}
         ...    sudo=True    return_stdout=True    return_stderr=True    return_rc=True
@@ -57,6 +57,6 @@ Poll For 429 During Startup
         IF    "${stdout}" == "200" or "${stdout}" == "401" or "${stdout}" == "403"
             BREAK
         END
-        Sleep    0.5s
+        Sleep    0.2s
     END
     RETURN    ${found}

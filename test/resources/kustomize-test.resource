@@ -25,8 +25,10 @@ Deploy Test Manifests
     Upload String To File    ${configmap}    ${manifest_dir}/configmap.yaml
 
 Remove Manifest Directory
-    [Documentation]    Completely remove a manifest directory
+    [Documentation]    Completely remove a manifest directory under /etc/microshift
     [Arguments]    ${manifest_dir}
+    Should Not Be Empty    ${manifest_dir}
+    Should Start With    ${manifest_dir}    /etc/microshift/
     Command Should Work    rm -rf ${manifest_dir}
 
 ConfigMap Should Not Exist
@@ -36,3 +38,4 @@ ConfigMap Should Not Exist
     ...    oc get configmap ${configmap_name} -n ${namespace}
     ...    allow_fail=True    return_rc=True
     Should Not Be Equal As Integers    ${rc}    0
+    Should Contain    ${stdout}    NotFound
