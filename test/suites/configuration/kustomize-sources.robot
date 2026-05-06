@@ -2,12 +2,12 @@
 Documentation       Tests for configurable kustomize manifest paths and glob pattern scanning
 
 Resource            ../../resources/common.resource
+Resource            ../../resources/kustomize-test.resource
 Resource            ../../resources/microshift-config.resource
 Resource            ../../resources/microshift-host.resource
 Resource            ../../resources/microshift-process.resource
 Resource            ../../resources/oc.resource
 Library             ../../resources/DataFormats.py
-Library             Process
 
 Suite Setup         Setup
 Suite Teardown      Teardown
@@ -51,7 +51,7 @@ ${GLOB_PATHS}           SEPARATOR=\n
 *** Test Cases ***
 Empty Kustomize Paths Disables Manifests
     [Documentation]    Setting kustomizePaths to an empty list disables all manifest loading.
-    Deploy Manifests To    ${MANIFEST_DIR_1}    ksrc-empty-ns
+    Deploy Test Manifests    ${MANIFEST_DIR_1}    ksrc-empty-ns
     Drop In MicroShift Config    ${EMPTY_PATHS}    10-kustomize
 
     Restart MicroShift
@@ -62,7 +62,7 @@ Empty Kustomize Paths Disables Manifests
 
 Single Kustomize Path
     [Documentation]    Setting a single kustomizePath should load manifests only from that path.
-    Deploy Manifests To    ${MANIFEST_DIR_1}    ksrc-single-ns
+    Deploy Test Manifests    ${MANIFEST_DIR_1}    ksrc-single-ns
     Drop In MicroShift Config    ${SINGLE_PATH}    10-kustomize
 
     Restart MicroShift
@@ -74,8 +74,8 @@ Single Kustomize Path
 
 Multiple Kustomize Paths
     [Documentation]    Multiple paths in kustomizePaths should all be loaded.
-    Deploy Manifests To    ${MANIFEST_DIR_1}    ksrc-multi-ns-1
-    Deploy Manifests To    ${MANIFEST_DIR_2}    ksrc-multi-ns-2
+    Deploy Test Manifests    ${MANIFEST_DIR_1}    ksrc-multi-ns-1
+    Deploy Test Manifests    ${MANIFEST_DIR_2}    ksrc-multi-ns-2
     Drop In MicroShift Config    ${MULTI_PATHS}    10-kustomize
 
     Restart MicroShift
@@ -87,8 +87,8 @@ Multiple Kustomize Paths
 
     [Teardown]    Run Keywords
     ...    Remove Drop In MicroShift Config    10-kustomize
-    ...    AND    Remove Manifest Dir    ${MANIFEST_DIR_1}
-    ...    AND    Remove Manifest Dir    ${MANIFEST_DIR_2}
+    ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_1}
+    ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_2}
     ...    AND    Run With Kubeconfig    oc delete namespace ksrc-multi-ns-1 --ignore-not-found
     ...    AND    Run With Kubeconfig    oc delete namespace ksrc-multi-ns-2 --ignore-not-found
     ...    AND    Restart MicroShift
@@ -102,7 +102,7 @@ Path Without Kustomization File Is Ignored
 
     [Teardown]    Run Keywords
     ...    Remove Drop In MicroShift Config    10-kustomize
-    ...    AND    Remove Manifest Dir    ${MANIFEST_DIR_1}
+    ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_1}
     ...    AND    Restart MicroShift
 
 Non Existent Path Is Ignored
@@ -130,8 +130,8 @@ Unset Kustomize Paths Uses Defaults
 
 Glob Patterns In Kustomize Paths
     [Documentation]    Glob patterns in kustomizePaths should match subdirectories.
-    Deploy Manifests To    ${GLOB_DIR_A}    ksrc-glob-ns-a
-    Deploy Manifests To    ${GLOB_DIR_B}    ksrc-glob-ns-b
+    Deploy Test Manifests    ${GLOB_DIR_A}    ksrc-glob-ns-a
+    Deploy Test Manifests    ${GLOB_DIR_B}    ksrc-glob-ns-b
     Drop In MicroShift Config    ${GLOB_PATHS}    10-kustomize
 
     Restart MicroShift
@@ -143,7 +143,7 @@ Glob Patterns In Kustomize Paths
 
     [Teardown]    Run Keywords
     ...    Remove Drop In MicroShift Config    10-kustomize
-    ...    AND    Remove Manifest Dir    ${GLOB_BASE}
+    ...    AND    Remove Manifest Directory    ${GLOB_BASE}
     ...    AND    Run With Kubeconfig    oc delete namespace ksrc-glob-ns-a --ignore-not-found
     ...    AND    Run With Kubeconfig    oc delete namespace ksrc-glob-ns-b --ignore-not-found
     ...    AND    Restart MicroShift
@@ -161,42 +161,10 @@ Teardown
     Logout MicroShift Host
     Remove Kubeconfig
 
-Deploy Manifests To
-    [Documentation]    Create a kustomization that deploys a configmap in the given namespace
-    [Arguments]    ${manifest_dir}    ${namespace}
-    Command Should Work    mkdir -p ${manifest_dir}
-    ${kustomization}=    Catenate    SEPARATOR=\n
-    ...    resources:
-    ...    - configmap.yaml
-    ...    namespace: ${namespace}
-    Upload String To File    ${kustomization}    ${manifest_dir}/kustomization.yaml
-    ${configmap}=    Catenate    SEPARATOR=\n
-    ...    apiVersion: v1
-    ...    kind: ConfigMap
-    ...    metadata:
-    ...    \ \ name: ${CONFIGMAP_NAME}
-    ...    data:
-    ...    \ \ path: ${manifest_dir}
-    Upload String To File    ${configmap}    ${manifest_dir}/configmap.yaml
-
-Remove Manifest Dir
-    [Documentation]    Completely remove a manifest directory
-    [Arguments]    ${manifest_dir}
-    ${stdout}    ${rc}=    Execute Command
-    ...    rm -rf ${manifest_dir}
-    ...    sudo=True    return_rc=True
-
-ConfigMap Should Not Exist
-    [Documentation]    Verify the configmap was not created in the namespace
-    [Arguments]    ${namespace}
-    ${result}=    Run Process    oc get configmap ${CONFIGMAP_NAME} -n ${namespace}
-    ...    env:KUBECONFIG=${KUBECONFIG}    stderr=STDOUT    shell=True
-    Should Not Be Equal As Integers    ${result.rc}    0
-
 Cleanup Kustomize Test
     [Documentation]    Standard cleanup for a single-path kustomize test
     [Arguments]    ${namespace}    ${manifest_dir}
     Remove Drop In MicroShift Config    10-kustomize
-    Remove Manifest Dir    ${manifest_dir}
+    Remove Manifest Directory    ${manifest_dir}
     Run With Kubeconfig    oc delete namespace ${namespace} --ignore-not-found
     Restart MicroShift

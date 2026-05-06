@@ -27,9 +27,7 @@ API Server Rejects Requests During Startup
     ${found_429}=    Poll For 429 During Startup
     Should Be True    ${found_429}    API server did not return 429 during startup
 
-    [Teardown]    Run Keywords
-    ...    Wait For MicroShift
-    ...    AND    Setup Kubeconfig
+    [Teardown]    Restart MicroShift
 
 
 *** Keywords ***

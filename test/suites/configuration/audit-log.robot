@@ -51,11 +51,27 @@ ${ROTATION_CONFIG}      SEPARATOR=\n
 ...                     \ \ \ \ maxFiles: 2
 ...                     \ \ \ \ profile: AllRequestBodies
 
+${ROTATION_INVALID}     SEPARATOR=\n
+...                     apiServer:
+...                     \ \ auditLog:
+...                     \ \ \ \ maxFileSize: invalid
+...                     \ \ \ \ profile: Default
+
 
 *** Test Cases ***
 Invalid Audit Profile Prevents Startup
     [Documentation]    An unrecognized audit profile should prevent MicroShift from starting.
     Drop In MicroShift Config    ${PROFILE_INVALID}    10-audit
+    Stop MicroShift
+    Command Should Fail    timeout 30 systemctl start microshift
+
+    [Teardown]    Run Keywords
+    ...    Remove Drop In MicroShift Config    10-audit
+    ...    AND    Restart MicroShift
+
+Invalid Audit Rotation Values Prevent Startup
+    [Documentation]    Non-integer rotation parameters should prevent MicroShift from starting.
+    Drop In MicroShift Config    ${ROTATION_INVALID}    10-audit
     Stop MicroShift
     Command Should Fail    timeout 30 systemctl start microshift
 
@@ -160,6 +176,7 @@ Setup
     Check Required Env Variables
     Login MicroShift Host
     Setup Kubeconfig
+    Run With Kubeconfig    oc delete namespace ${TEST_NS} --ignore-not-found
     Run With Kubeconfig    oc create namespace ${TEST_NS}
 
 Teardown
@@ -197,20 +214,30 @@ Grep Audit Log Read Bodies
     RETURN    ${stdout.strip()}
 
 Audit Backup Files Should Match
-    [Documentation]    Verify the expected number of audit backup files exist.
+    [Documentation]    Verify the expected number of audit backup files exist and each is at least 1MB.
     ...    Generates API traffic to fill audit logs while waiting.
     [Arguments]    ${expected_count}
     Generate API Traffic
     ${stdout}=    Command Should Work
     ...    find ${AUDIT_LOG_DIR} -name 'audit-*.log' -type f | wc -l
     Should Be Equal As Strings    ${stdout.strip()}    ${expected_count}
+    ${size_count}=    Command Should Work
+    ...    find ${AUDIT_LOG_DIR} -name 'audit-*.log' -type f -size +1M | wc -l
+    Should Be Equal As Strings    ${size_count.strip()}    ${expected_count}
+    ...    Rotated audit files should each be at least 1MB
 
 Generate API Traffic
-    [Documentation]    Generate API activity to produce audit log entries
+    [Documentation]    Generate API activity to produce audit log entries.
+    ...    Fails if none of the API operations succeed.
+    ${successes}=    Set Variable    ${0}
     FOR    ${i}    IN RANGE    20
         Run With Kubeconfig    oc get pods -A    allow_fail=True
-        Run With Kubeconfig
+        ${stdout}    ${rc}=    Run With Kubeconfig
         ...    oc create configmap traffic-cm-${i} -n ${TEST_NS} --from-literal=data=padding${{" " * 4096}}
-        ...    allow_fail=True
+        ...    allow_fail=True    return_rc=True
+        IF    ${rc} == 0
+            ${successes}=    Evaluate    ${successes} + 1
+        END
         Run With Kubeconfig    oc delete configmap traffic-cm-${i} -n ${TEST_NS} --ignore-not-found    allow_fail=True
     END
+    Should Be True    ${successes} > 0    No API traffic was generated — API server may be down

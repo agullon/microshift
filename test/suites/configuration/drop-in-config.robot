@@ -2,12 +2,12 @@
 Documentation       Tests for drop-in configuration directory merge and override semantics
 
 Resource            ../../resources/common.resource
+Resource            ../../resources/kustomize-test.resource
 Resource            ../../resources/microshift-config.resource
 Resource            ../../resources/microshift-host.resource
 Resource            ../../resources/microshift-process.resource
 Resource            ../../resources/oc.resource
 Library             ../../resources/DataFormats.py
-Library             Process
 
 Suite Setup         Setup
 Suite Teardown      Teardown
@@ -52,7 +52,7 @@ ${DEBUG_LEVEL}          SEPARATOR=\n
 Drop In Sets Kustomize Paths
     [Documentation]    A drop-in config file can set kustomizePaths and manifests are loaded from it.
     Drop In MicroShift Config    ${KUSTOMIZE_A}    10-kustomize
-    Deploy Test ConfigMap    ${MANIFEST_DIR_A}    dropin-ns-a
+    Deploy Test Manifests    ${MANIFEST_DIR_A}    dropin-ns-a
     Restart MicroShift
     Wait Until Keyword Succeeds    10x    10s
     ...    Oc Get    configmap    dropin-ns-a    test-configmap
@@ -68,16 +68,14 @@ Higher Numbered Drop In Overrides Array
     ...    file wins (arrays are replaced, not merged).
     Drop In MicroShift Config    ${KUSTOMIZE_A}    10-kustomize
     Drop In MicroShift Config    ${KUSTOMIZE_B}    20-kustomize
-    Deploy Test ConfigMap    ${MANIFEST_DIR_A}    dropin-ns-a2
-    Deploy Test ConfigMap    ${MANIFEST_DIR_B}    dropin-ns-b
+    Deploy Test Manifests    ${MANIFEST_DIR_A}    dropin-ns-a2
+    Deploy Test Manifests    ${MANIFEST_DIR_B}    dropin-ns-b
 
     Restart MicroShift
 
     Wait Until Keyword Succeeds    10x    10s
     ...    Oc Get    configmap    dropin-ns-b    test-configmap
-    ${result}=    Run Process    oc get configmap test-configmap -n dropin-ns-a2
-    ...    env:KUBECONFIG=${KUBECONFIG}    stderr=STDOUT    shell=True
-    Should Not Be Equal As Integers    ${result.rc}    0
+    ConfigMap Should Not Exist    dropin-ns-a2
 
     [Teardown]    Run Keywords
     ...    Remove Drop In MicroShift Config    10-kustomize
@@ -130,28 +128,3 @@ Teardown
     [Documentation]    Test suite teardown
     Logout MicroShift Host
     Remove Kubeconfig
-
-Deploy Test ConfigMap
-    [Documentation]    Create a kustomization that deploys a configmap in the given namespace
-    [Arguments]    ${manifest_dir}    ${namespace}
-    Command Should Work    mkdir -p ${manifest_dir}
-    ${kustomization}=    Catenate    SEPARATOR=\n
-    ...    resources:
-    ...    - configmap.yaml
-    ...    namespace: ${namespace}
-    Upload String To File    ${kustomization}    ${manifest_dir}/kustomization.yaml
-    ${configmap}=    Catenate    SEPARATOR=\n
-    ...    apiVersion: v1
-    ...    kind: ConfigMap
-    ...    metadata:
-    ...    \ \ name: test-configmap
-    ...    data:
-    ...    \ \ path: ${manifest_dir}
-    Upload String To File    ${configmap}    ${manifest_dir}/configmap.yaml
-
-Remove Manifest Directory
-    [Documentation]    Completely remove a manifest directory
-    [Arguments]    ${manifest_dir}
-    ${stdout}    ${rc}=    Execute Command
-    ...    rm -rf ${manifest_dir}
-    ...    sudo=True    return_rc=True
