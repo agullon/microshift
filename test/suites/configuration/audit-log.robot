@@ -196,21 +196,21 @@ Grep Audit Log Bodies Count
     [Documentation]    Count audit entries with requestObject or responseObject for a resource
     [Arguments]    ${resource_name}
     ${stdout}=    Command Should Work
-    ...    grep '"${resource_name}"' ${AUDIT_LOG} | grep -c '"requestObject"\\|"responseObject"' || true
+    ...    grep '"${resource_name}"' ${AUDIT_LOG} | grep -c '"requestObject"\\|"responseObject"' || test $? -eq 1
     RETURN    ${stdout.strip()}
 
 Grep Audit Log Write Bodies
     [Documentation]    Count audit entries with requestObject for write verbs
     [Arguments]    ${resource_name}
     ${stdout}=    Command Should Work
-    ...    grep '"${resource_name}"' ${AUDIT_LOG} | grep -E '"verb":"(create|update|patch|delete)"' | grep -c '"requestObject"' || true
+    ...    grep '"${resource_name}"' ${AUDIT_LOG} | grep -E '"verb":"(create|update|patch|delete)"' | grep -c '"requestObject"' || test $? -eq 1
     RETURN    ${stdout.strip()}
 
 Grep Audit Log Read Bodies
     [Documentation]    Count audit entries with responseObject for read verbs
     [Arguments]    ${resource_name}
     ${stdout}=    Command Should Work
-    ...    grep '"${resource_name}"' ${AUDIT_LOG} | grep -E '"verb":"(get|list|watch)"' | grep -c '"responseObject"' || true
+    ...    grep '"${resource_name}"' ${AUDIT_LOG} | grep -E '"verb":"(get|list|watch)"' | grep -c '"responseObject"' || test $? -eq 1
     RETURN    ${stdout.strip()}
 
 Audit Backup Files Should Match

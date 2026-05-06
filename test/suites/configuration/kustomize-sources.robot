@@ -164,7 +164,8 @@ Teardown
 Cleanup Kustomize Test
     [Documentation]    Standard cleanup for a single-path kustomize test
     [Arguments]    ${namespace}    ${manifest_dir}
-    Remove Drop In MicroShift Config    10-kustomize
-    Remove Manifest Directory    ${manifest_dir}
-    Oc Delete    namespace ${namespace} --ignore-not-found
-    Restart MicroShift
+    Run Keywords
+    ...    Remove Drop In MicroShift Config    10-kustomize
+    ...    AND    Remove Manifest Directory    ${manifest_dir}
+    ...    AND    Oc Delete    namespace ${namespace} --ignore-not-found
+    ...    AND    Restart MicroShift
