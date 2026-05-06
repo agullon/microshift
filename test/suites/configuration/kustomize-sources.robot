@@ -89,8 +89,8 @@ Multiple Kustomize Paths
     ...    Remove Drop In MicroShift Config    10-kustomize
     ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_1}
     ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_2}
-    ...    AND    Run With Kubeconfig    oc delete namespace ksrc-multi-ns-1 --ignore-not-found
-    ...    AND    Run With Kubeconfig    oc delete namespace ksrc-multi-ns-2 --ignore-not-found
+    ...    AND    Oc Delete    namespace ksrc-multi-ns-1 --ignore-not-found
+    ...    AND    Oc Delete    namespace ksrc-multi-ns-2 --ignore-not-found
     ...    AND    Restart MicroShift
 
 Path Without Kustomization File Is Ignored
@@ -144,8 +144,8 @@ Glob Patterns In Kustomize Paths
     [Teardown]    Run Keywords
     ...    Remove Drop In MicroShift Config    10-kustomize
     ...    AND    Remove Manifest Directory    ${GLOB_BASE}
-    ...    AND    Run With Kubeconfig    oc delete namespace ksrc-glob-ns-a --ignore-not-found
-    ...    AND    Run With Kubeconfig    oc delete namespace ksrc-glob-ns-b --ignore-not-found
+    ...    AND    Oc Delete    namespace ksrc-glob-ns-a --ignore-not-found
+    ...    AND    Oc Delete    namespace ksrc-glob-ns-b --ignore-not-found
     ...    AND    Restart MicroShift
 
 
@@ -166,5 +166,5 @@ Cleanup Kustomize Test
     [Arguments]    ${namespace}    ${manifest_dir}
     Remove Drop In MicroShift Config    10-kustomize
     Remove Manifest Directory    ${manifest_dir}
-    Run With Kubeconfig    oc delete namespace ${namespace} --ignore-not-found
+    Oc Delete    namespace ${namespace} --ignore-not-found
     Restart MicroShift

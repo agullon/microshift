@@ -85,13 +85,13 @@ Audit Profile None Produces No Logs
     Restart MicroShift
 
     ${cm_name}=    Set Variable    audit-none-cm
-    Run With Kubeconfig    oc create configmap ${cm_name} -n ${TEST_NS}
+    Oc Create    configmap ${cm_name} -n ${TEST_NS}
 
     ${count}=    Grep Audit Log Count    ${cm_name}
     Should Be Equal As Integers    ${count}    0
 
     [Teardown]    Run Keywords
-    ...    Run With Kubeconfig    oc delete configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
+    ...    Oc Delete    configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
     ...    AND    Remove Drop In MicroShift Config    10-audit
     ...    AND    Restart MicroShift
 
@@ -101,8 +101,8 @@ Audit Profile Default Logs Metadata Only
     Restart MicroShift
 
     ${cm_name}=    Set Variable    audit-default-cm
-    Run With Kubeconfig    oc create configmap ${cm_name} -n ${TEST_NS}
-    Run With Kubeconfig    oc get configmap ${cm_name} -n ${TEST_NS}
+    Oc Create    configmap ${cm_name} -n ${TEST_NS}
+    Oc Get    configmap    ${TEST_NS}    ${cm_name}
 
     ${meta_count}=    Grep Audit Log Count    ${cm_name}
     Should Be True    ${meta_count} > 0
@@ -111,7 +111,7 @@ Audit Profile Default Logs Metadata Only
     Should Be Equal As Integers    ${body_count}    0
 
     [Teardown]    Run Keywords
-    ...    Run With Kubeconfig    oc delete configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
+    ...    Oc Delete    configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
     ...    AND    Remove Drop In MicroShift Config    10-audit
     ...    AND    Restart MicroShift
 
@@ -122,8 +122,8 @@ Audit Profile WriteRequestBodies Logs Write Operations
     Restart MicroShift
 
     ${cm_name}=    Set Variable    audit-write-cm
-    Run With Kubeconfig    oc create configmap ${cm_name} -n ${TEST_NS}
-    Run With Kubeconfig    oc get configmap ${cm_name} -n ${TEST_NS}
+    Oc Create    configmap ${cm_name} -n ${TEST_NS}
+    Oc Get    configmap    ${TEST_NS}    ${cm_name}
 
     ${write_bodies}=    Grep Audit Log Write Bodies    ${cm_name}
     Should Be True    ${write_bodies} > 0
@@ -132,7 +132,7 @@ Audit Profile WriteRequestBodies Logs Write Operations
     Should Be Equal As Integers    ${read_bodies}    0
 
     [Teardown]    Run Keywords
-    ...    Run With Kubeconfig    oc delete configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
+    ...    Oc Delete    configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
     ...    AND    Remove Drop In MicroShift Config    10-audit
     ...    AND    Restart MicroShift
 
@@ -142,8 +142,8 @@ Audit Profile AllRequestBodies Logs All Operations
     Restart MicroShift
 
     ${cm_name}=    Set Variable    audit-all-cm
-    Run With Kubeconfig    oc create configmap ${cm_name} -n ${TEST_NS}
-    Run With Kubeconfig    oc get configmap ${cm_name} -n ${TEST_NS}
+    Oc Create    configmap ${cm_name} -n ${TEST_NS}
+    Oc Get    configmap    ${TEST_NS}    ${cm_name}
 
     ${write_bodies}=    Grep Audit Log Write Bodies    ${cm_name}
     Should Be True    ${write_bodies} > 0
@@ -152,7 +152,7 @@ Audit Profile AllRequestBodies Logs All Operations
     Should Be True    ${read_bodies} > 0
 
     [Teardown]    Run Keywords
-    ...    Run With Kubeconfig    oc delete configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
+    ...    Oc Delete    configmap ${cm_name} -n ${TEST_NS} --ignore-not-found
     ...    AND    Remove Drop In MicroShift Config    10-audit
     ...    AND    Restart MicroShift
 
@@ -176,12 +176,12 @@ Setup
     Check Required Env Variables
     Login MicroShift Host
     Setup Kubeconfig
-    Run With Kubeconfig    oc delete namespace ${TEST_NS} --ignore-not-found
-    Run With Kubeconfig    oc create namespace ${TEST_NS}
+    Oc Delete    namespace ${TEST_NS} --ignore-not-found
+    Oc Create    namespace ${TEST_NS}
 
 Teardown
     [Documentation]    Test suite teardown
-    Run With Kubeconfig    oc delete namespace ${TEST_NS} --ignore-not-found
+    Oc Delete    namespace ${TEST_NS} --ignore-not-found
     Logout MicroShift Host
     Remove Kubeconfig
 

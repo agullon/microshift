@@ -60,7 +60,7 @@ Drop In Sets Kustomize Paths
     [Teardown]    Run Keywords
     ...    Remove Drop In MicroShift Config    10-kustomize
     ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_A}
-    ...    AND    Run With Kubeconfig    oc delete namespace dropin-ns-a --ignore-not-found
+    ...    AND    Oc Delete    namespace dropin-ns-a --ignore-not-found
     ...    AND    Restart MicroShift
 
 Higher Numbered Drop In Overrides Array
@@ -82,8 +82,8 @@ Higher Numbered Drop In Overrides Array
     ...    AND    Remove Drop In MicroShift Config    20-kustomize
     ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_A}
     ...    AND    Remove Manifest Directory    ${MANIFEST_DIR_B}
-    ...    AND    Run With Kubeconfig    oc delete namespace dropin-ns-a2 --ignore-not-found
-    ...    AND    Run With Kubeconfig    oc delete namespace dropin-ns-b --ignore-not-found
+    ...    AND    Oc Delete    namespace dropin-ns-a2 --ignore-not-found
+    ...    AND    Oc Delete    namespace dropin-ns-b --ignore-not-found
     ...    AND    Restart MicroShift
 
 SAN Arrays Are Replaced Not Merged
